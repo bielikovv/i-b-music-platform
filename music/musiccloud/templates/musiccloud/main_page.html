@@ -8,6 +8,7 @@
             <h1>Recommendations:</h1>
             {% for item in items %}
             <h3 class="card-title">{{ item.composition_title }}</h3>
+            <h5 class="card-title">{{ item.composition_singer.nickname }}</h5>
             <audio src="{{ item.composition_file.url }}" id="audio-area" controls></audio>
             {% endfor %}
         </div>

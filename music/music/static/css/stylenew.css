@@ -5,6 +5,7 @@ body{
 }
 
 #navbarDropdown{
+    border-color: #ffffff;
     color: #ffffff;
     border-style: solid;
     padding: 5px 30px 5px 30px;
@@ -13,6 +14,8 @@ body{
     margin-right: 40px;
     margin-top: 30px;
     -webkit-transition: all 0.25s ease-out;
+    width: 350px;
+    text-align: center;
 }
 
 #navbarDropdown:hover{
@@ -72,7 +75,7 @@ body{
     position: relative;
     z-index: 10;
     background: linear-gradient(45deg, #4b7c78,#66c193);
-    width: 335px;
+    width: 355px;
     margin-top: 10px;
     text-align: center;
     border-color: #ffffff;
@@ -346,4 +349,9 @@ select#id_user{
     border: 1px solid #ffffff;
     display: none;
     -webkit-transition: all 1s ease-out;
+}
+
+#composition-adding-form{
+    color: #ffffff;
+
 }
