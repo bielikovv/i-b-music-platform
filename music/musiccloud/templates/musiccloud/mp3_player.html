@@ -15,7 +15,6 @@
     }
 
 
-
     function getUrl(id_js) {
         window.location = 'playlist/' + id_js;
     }
@@ -28,8 +27,8 @@
             <form enctype="multipart/form-data" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="btn btn-primary btn-sm">Добавить</button>
-                <button type="button" onclick="getMusic()" class="btn btn-primary btn-sm">Скрыть</button>
+                <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                <button type="button" onclick="getMusic()" class="btn btn-primary btn-sm">Hide</button>
             </form>
         </div>
 
@@ -37,16 +36,16 @@
         <div id="music-card" class="music-card">
             <div class="card-body">
 
-                <h1 class="card-title">Мои плейлисты:</h1>
-                <button type="submit" id="add-music-button" onclick="getAddForm()" class="btn btn-primary btn-sm">Добавить плейлист</button>
+                <h1 class="card-title">My playlists:</h1>
+                <button type="submit" id="add-music-button" onclick="getAddForm()" class="btn btn-primary btn-sm">Add playlist</button>
                 <br>
 
                 {% for item in track %}
                 <div id="playlist-card" onclick="getUrl('{{ item.pk }}')" class="playlist-card">
-                    {% if item.envelope %}
-                    <img id="envelope-playlist" src="{{ item.envelope.url }}">
+                    {% if item.playlist_envelope %}
+                    <img id="envelope-playlist" src="{{ item.playlist_envelope.url }}">
                     {% endif %}
-                    <h3 class="card-title" id="playlist-card-title">{{ item.title }}</h3>
+                    <h3 class="card-title" id="playlist-card-title">{{ item.playlist_title }}</h3>
                 </div>
                 {% endfor %}
             </div>

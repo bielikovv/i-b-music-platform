@@ -16,20 +16,20 @@
 
 
 
-
         <div id="redaction-card">
             <div class="card-body">
-                <h3 class="card-title">Информация о пользователе:</h3>
-                <h4 class="card-title">Ник исполнителя: {{ user.profile.nickname }}</h4>
-                <h5 class="card-title">Имя: {{ user.first_name }}</h5>
-                <h5 class="card-title">Фамилия: {{ user.last_name }}</h5>
-                <p class="card-text">О себе: {{ user.profile.about }}</p>
+                <h3 class="card-title">User information:</h3>
+                <h4 class="card-title">Singer nickname: {{ user.profile.nickname }}</h4>
+                <h5 class="card-title">First name: {{ user.first_name }}</h5>
+                <h5 class="card-title">Last name: {{ user.last_name }}</h5>
+                <p class="card-text">About me: {{ user.profile.about }}</p>
                 <p class="card-text">E-mail: {{ user.email }}</p>
-                <p class="card-text">Местоположение: {{ user.profile.birth_date }}</p>
-                <p class="card-text">Дата рождения: {{ user.profile.location }}</p>
-                <button type="button" id="open-form-button" onclick="showForm()" class="btn btn-primary btn-sm">Изменить данные</button>
+                <p class="card-text">My location: {{ user.profile.birth_date }}</p>
+                <p class="card-text">Date of birth: {{ user.profile.location }}</p>
+                <button type="button" id="open-form-button" onclick="showForm()" class="btn btn-primary btn-sm">Change information</button>
             </div>
         </div>
+
 
 
         <div id="update-form">
@@ -37,8 +37,8 @@
                 <form method="post" enctype="multipart/form-data" id="form-update-info">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary btn-sm">Изменить</button>
-                    <button type="submit" onclick="showDefaultPage()" class="btn btn-primary btn-sm">Вернуться</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Change</button>
+                    <button type="submit" onclick="showDefaultPage()" class="btn btn-primary btn-sm">Back</button>
                 </form>
             </div>
         </div>

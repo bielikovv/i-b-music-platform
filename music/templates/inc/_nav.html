@@ -10,20 +10,20 @@
         <div class="navbar-nav" id="logout-bar" >
             <li class="nav-item dropdown" >
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Добро пожаловать, {{ user.first_name }} {{ user.last_name }}
+                    Welcome, {{ user.first_name }} {{ user.last_name }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'profile' %}">Мой профиль</a>
-                    <a class="dropdown-item" href="{% url 'mp3' %}">Мои плейлисты</a>
-                    <a class="dropdown-item" href="{% url 'add-song' %}">Добавить релиз</a>
+                    <a class="dropdown-item" href="{% url 'profile' %}">My profile</a>
+                    <a class="dropdown-item" href="{% url 'mp3' %}">My playlists</a>
+                    <a class="dropdown-item" href="{% url 'add-release' %}">Add release</a>
                     <hr class="dropdown-divider">
-                    <a class="dropdown-item" href="{% url 'logout' %}">Выход</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                 </div>
             </li>
         </div>
         {% else %}
         <div class="navbar-nav" id="auth-bar">
-            <a class="nav-link active" id="reg" href="{% url 'register' %}">Регистрация</a><a class="nav-link active" id="log" href="{% url 'login' %}">Вход</a>
+            <a class="nav-link active" id="reg" href="{% url 'register' %}">Register</a><a class="nav-link active" id="log" href="{% url 'login' %}">Login</a>
         </div>
         {% endif %}
     </div>

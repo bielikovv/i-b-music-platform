@@ -3,16 +3,6 @@
 {% block content %}
 
 <script>
-    function getAddForm() {
-        document.getElementById('music-add-card').style.display = 'block';
-        document.getElementById('add-music-button').style.display = 'none';
-
-
-    }
-    function getMusic() {
-        document.getElementById('music-add-card').style.display = 'none';
-        document.getElementById('add-music-button').style.display = 'block';
-    }
 
 </script>
 
@@ -21,17 +11,7 @@
     <div class="row">
         <div id="music-current-card" class="music-current-card">
             <div class="card-body">
-                <div id="playlist-current-card" class="playlist-card">
-                    <h1 class="card-title">{{ playlist.title }}</h1>
-                    {% if playlist.envelope %}
-                    <img id="envelope-current-playlist" src="{{ playlist.envelope.url }}">
-                    {% endif %}
-                    {% for music in songs %}
-                    {% if music %}
-                    <audio src="{{ music.song.url }}"></audio>
-                    {% endif %}
-                    {% endfor %}
-                </div>
+
             </div>
         </div>
     </div>
