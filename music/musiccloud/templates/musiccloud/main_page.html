@@ -6,10 +6,13 @@
     <div class="row">
         <div id="music-main-card">
             <h1>Recommendations:</h1>
+            <br>
             {% for item in items %}
-            <h3 class="card-title">{{ item.composition_title }}</h3>
-            <h5 class="card-title">{{ item.composition_singer.nickname }}</h5>
-            <audio src="{{ item.composition_file.url }}" id="audio-area" controls></audio>
+            <div id="rec-composition-table">
+                <h5 class="card-title">{{ item.composition_title }}</h5>
+                <h6 class="card-title">{{ item.composition_singer.nickname }}</h6>
+                <audio src="{{ item.composition_file.url }}" id="audio-area" controls></audio>
+            </div>
             {% endfor %}
         </div>
     </div>

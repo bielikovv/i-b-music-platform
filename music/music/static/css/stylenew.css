@@ -189,6 +189,13 @@ body{
 
 }
 
+#rec-composition-table{
+    border: 1px solid #ffffff;
+    padding: 20px;
+    margin: 10px;
+
+}
+
 #music-main-card{
     color: #ffffff;
     border-style: solid;
@@ -198,7 +205,9 @@ body{
     margin-top: 25px;
     padding: 25px;
     width: 1300px;
+    display: inline-block;
 }
+
 
 #playlist-card{
     border: 1px solid #ffffff;
