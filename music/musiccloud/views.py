@@ -11,7 +11,7 @@ def show_main_page(request):
 
 
 def show_mp3(request):
-    track = Playlists.objects.filter(user=request.user)
+    track = Playlists.objects.filter(playlist_user=request.user)
     if request.method == 'POST':
         form = AddPlaylistForm(request.POST, request.FILES, initial={'playlist_user': request.user})
         if form.is_valid():
@@ -25,8 +25,8 @@ def show_mp3(request):
 
 def show_playlist(request, playlist_id):
     playlist = Playlists.objects.get(pk=playlist_id)
-    songs = playlist.song.all()
-    return render(request, 'musiccloud/current_playlist.html', {'playlist':playlist, 'songs':songs})
+    compositions = playlist.playlist_compostion.all()
+    return render(request, 'musiccloud/current_playlist.html', {'playlist':playlist, 'compositions':compositions})
 
 
 
@@ -54,7 +54,7 @@ def add_composition(request):
             form.save()
             return redirect('main_page')
     else:
-        form = AddCompositionForm(initial={'user':request.user, 'singer':request.user.profile.nickname})
+        form = AddCompositionForm(initial={'composition_user': request.user, 'composition_singer': request.user.profile.nickname})
     return render(request, 'musiccloud/add_compozition.html', {'form': form})
 
 

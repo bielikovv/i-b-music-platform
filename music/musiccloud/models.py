@@ -5,7 +5,7 @@ from django.dispatch import receiver
 
 class Album(models.Model):
     album_user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name='Username')
-    album_envelope = models.ImageField(verbose_name='Envelope', upload_to='photo/%Y/%m/%d')
+    album_envelope = models.ImageField(verbose_name='Envelope', upload_to='photo/%Y/%m/%d', null=True)
     album_title = models.CharField(max_length=128, verbose_name='Title', default='NoName', blank=True)
     date_album = models.DateField(auto_now_add=True, verbose_name='Album release date')
 
@@ -16,8 +16,8 @@ class Album(models.Model):
 
 class Playlists(models.Model):
     playlist_user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Username', null=True)
-    playlist_title = models.CharField(max_length=128, verbose_name='Title')
-    playlist_envelope = models.ImageField(verbose_name='Envelope', upload_to='photo/%Y/%m/%d')
+    playlist_title = models.CharField(max_length=128, verbose_name='Title', null=True)
+    playlist_envelope = models.ImageField(verbose_name='Envelope', upload_to='photo/%Y/%m/%d', null=True)
     date_playlist = models.DateField(auto_now_add=True, verbose_name='Playlist creation date')
     playlist_composition = models.ManyToManyField('Composition', verbose_name='Composition', blank=True)
 
@@ -29,7 +29,7 @@ class Playlists(models.Model):
 class Composition(models.Model):
     composition_user = models.ForeignKey(User, verbose_name='Username', on_delete=models.PROTECT, null=True)
     composition_envelope = models.ImageField(verbose_name='Envelope', upload_to='photo/%Y/%m/%d', blank=True, null=True)
-    composition_title = models.CharField(max_length=455, verbose_name='Title', default='Без названия', blank=True)
+    composition_title = models.CharField(max_length=455, verbose_name='Title', default='NoName', blank=True)
     composition_file = models.FileField(verbose_name='Composition file', upload_to='audio')
     composition_album = models.ForeignKey(Album, verbose_name='Album', blank=True, on_delete=models.CASCADE, null=True)
     composition_date = models.DateField(auto_now_add=True, verbose_name='Song release date', null=True)

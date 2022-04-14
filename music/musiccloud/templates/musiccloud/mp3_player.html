@@ -35,11 +35,9 @@
 
         <div id="music-card" class="music-card">
             <div class="card-body">
-
                 <h1 class="card-title">My playlists:</h1>
                 <button type="submit" id="add-music-button" onclick="getAddForm()" class="btn btn-primary btn-sm">Add playlist</button>
                 <br>
-
                 {% for item in track %}
                 <div id="playlist-card" onclick="getUrl('{{ item.pk }}')" class="playlist-card">
                     {% if item.playlist_envelope %}

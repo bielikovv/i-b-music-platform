@@ -43,13 +43,13 @@ class RedactInfoUserForm(forms.ModelForm):
 
 
 class AddPlaylistForm(forms.ModelForm):
-    user = forms.ModelChoiceField(label='', empty_label=None, disabled=True, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
-    title = forms.CharField(label='Title', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    envelope = forms.FileField(label='Envelope', widget=forms.FileInput(attrs={'class': 'form-control'}))
+    playlist_user = forms.ModelChoiceField(label='', empty_label=None, disabled=True, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    playlist_title = forms.CharField(label='Title', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    playlist_envelope = forms.FileField(label='Envelope', widget=forms.FileInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Playlists
-        fields = ['title', 'envelope', 'user']
+        fields = ['playlist_title', 'playlist_envelope', 'playlist_user']
 
 
 
@@ -60,11 +60,11 @@ class AddAlbumForm(forms.ModelForm):
 
 
 class AddCompositionForm(forms.ModelForm):
-    composition_user = forms.ModelChoiceField(label='', empty_label=None, disabled=True, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    composition_user = forms.ModelChoiceField(label='', empty_label=None, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
     composition_title = forms.CharField(label='Title', widget=forms.TextInput(attrs={'class': 'form-control'}))
     composition_envelope = forms.FileField(label='Envelope', widget=forms.FileInput(attrs={'class': 'form-control'}))
     composition_file = forms.FileField(label='Song file', widget=forms.FileInput(attrs={'class': 'form-control'}))
-    composition_singer = forms.ModelChoiceField(label='', empty_label=None, disabled=True, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    composition_singer = forms.ModelChoiceField(label='', empty_label=None, queryset=Profile.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Composition
