@@ -212,7 +212,7 @@ body{
     background-color: rgba(75, 124, 120, 15%);
 }
 
-select#id_user{
+select#id_playlist_user{
     display: none;
 }
 
@@ -225,6 +225,14 @@ select#id_user{
     border: 0px solid;
     width: 280px;
 
+}
+
+select#id_composition_user{
+    display: none;
+}
+
+select#id_composition_singer{
+    display: none;
 }
 
 #envelope-current-playlist{

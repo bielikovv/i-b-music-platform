@@ -27,14 +27,14 @@ class LoginForm(AuthenticationForm):
 
 
 class RedactInfoUserForm(forms.ModelForm):
-    photo = forms.ImageField(label='Photo', widget=forms.FileInput(attrs={'class': 'form-control'}))
-    first_name = forms.CharField(label='First name', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    last_name = forms.CharField(label='Last name', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    nickname = forms.CharField(label='Singer nickname', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    about = forms.CharField(label='About me', widget=forms.Textarea(attrs={'class': 'form-control'}))
-    email = forms.EmailField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    location = forms.CharField(label='My location', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    birth_date = forms.DateField(label='Date of birth', widget=forms.DateInput(attrs={'class': 'form-control'}))
+    photo = forms.ImageField(label='Photo', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm'}))
+    first_name = forms.CharField(label='First name', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
+    last_name = forms.CharField(label='Last name', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
+    nickname = forms.CharField(label='Singer nickname', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
+    about = forms.CharField(label='About me', widget=forms.Textarea(attrs={'class': 'form-control form-control-sm'}))
+    email = forms.EmailField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-control form-control-sm'}))
+    location = forms.CharField(label='My location', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
+    birth_date = forms.DateField(label='Date of birth', widget=forms.DateInput(attrs={'class': 'form-control form-control-sm'}))
 
     class Meta:
         model = User
@@ -43,9 +43,9 @@ class RedactInfoUserForm(forms.ModelForm):
 
 
 class AddPlaylistForm(forms.ModelForm):
-    playlist_user = forms.ModelChoiceField(label='', empty_label=None, disabled=True, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
-    playlist_title = forms.CharField(label='Title', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    playlist_envelope = forms.FileField(label='Envelope', widget=forms.FileInput(attrs={'class': 'form-control'}))
+    playlist_user = forms.ModelChoiceField(label='', empty_label=None, disabled=True, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
+    playlist_title = forms.CharField(label='Title', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
+    playlist_envelope = forms.FileField(label='Envelope', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm'}))
 
     class Meta:
         model = Playlists
@@ -54,17 +54,17 @@ class AddPlaylistForm(forms.ModelForm):
 
 
 class AddAlbumForm(forms.ModelForm):
-    album_title = forms.CharField(label='Album name', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    album_title = forms.CharField(label='Album name', widget=forms.TextInput(attrs={'class': 'form-control '}))
     album_envelope = forms.FileField(label='Album envelope', widget=forms.FileInput(attrs={'class': 'form-control'}))
 
 
 
 class AddCompositionForm(forms.ModelForm):
-    composition_user = forms.ModelChoiceField(label='', empty_label=None, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
-    composition_title = forms.CharField(label='Title', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    composition_envelope = forms.FileField(label='Envelope', widget=forms.FileInput(attrs={'class': 'form-control'}))
-    composition_file = forms.FileField(label='Song file', widget=forms.FileInput(attrs={'class': 'form-control'}))
-    composition_singer = forms.ModelChoiceField(label='', empty_label=None, queryset=Profile.objects.all(), widget=forms.Select(attrs={'class': 'form-control'}))
+    composition_user = forms.ModelChoiceField(label='', empty_label=None, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
+    composition_title = forms.CharField(label='Title', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
+    composition_envelope = forms.FileField(label='Envelope', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm'}))
+    composition_file = forms.FileField(label='Song file', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm'}))
+    composition_singer = forms.ModelChoiceField(label='', empty_label=None, queryset=Profile.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
 
     class Meta:
         model = Composition
