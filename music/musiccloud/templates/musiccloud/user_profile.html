@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div id="profile-card">
+            {% if user.profile.photo %}
+            <img src="{{ user.profile.photo.url }}" id="profile-photo">
+            {% else %}
+            <img src="https://www.meme-arsenal.com/memes/fefac21eda463aa9a307c7cfdbea1bee.jpg" id="profile-empty-photo" alt="">
+            {% endif %}
+            <h3 class="card-title">{{ user.profile.nickname }}</h3>
+            <h5 class="card-title">({{ user.first_name }} {{ user.last_name }})</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ user.profile.location }}</h6>
+        </div>
+
+
+
+
+        <div id="redaction-card">
+            <div class="card-body">
+                <h3 class="card-title">Информация о пользователе:</h3>
+                <h4 class="card-title">Ник исполнителя: {{ user.profile.nickname }}</h4>
+                <h5 class="card-title">Имя: {{ user.first_name }}</h5>
+                <h5 class="card-title">Фамилия: {{ user.last_name }}</h5>
+                <p class="card-text">О себе: {{ user.profile.about }}</p>
+                <p class="card-text">E-mail: {{ user.email }}</p>
+                <p class="card-text">Местоположение: {{ user.profile.birth_date }}</p>
+                <p class="card-text">Дата рождения: {{ user.profile.location }}</p>
+                <button type="button" id="open-form-button" onclick="showForm()" class="btn btn-primary btn-sm">Изменить данные</button>
+            </div>
+        </div>
+
+
+        <div id="update-form">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" id="form-update-info">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-sm">Изменить</button>
+                    <button type="submit" onclick="showDefaultPage()" class="btn btn-primary btn-sm">Вернуться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+ function showForm() {
+    document.getElementById('update-form').style.display = 'block';
+    document.getElementById('redaction-card').style.width = 500+'px';
+ }
+
+ function showDefaultPage() {
+    document.getElementById('update-form').style.display = 'none';
+    document.getElementById('redaction-card').style.width = 800+'px';
+ }
+</script>
+{% endblock %}

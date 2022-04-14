@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div id="music-main-card">
+            <h1>Рекомендованые треки:</h1>
+            {% for item in items %}
+            <h3 class="card-title">{{ item.title }}</h3>
+            <audio src="{{ item.file.url }}" id="audio-area" controls></audio>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

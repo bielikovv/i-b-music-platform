@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'main_page' %}">I&B</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        {% if user.is_authenticated %}
+        <div class="navbar-nav" id="logout-bar" >
+            <li class="nav-item dropdown" >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Добро пожаловать, {{ user.first_name }} {{ user.last_name }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'profile' %}">Мой профиль</a>
+                    <a class="dropdown-item" href="{% url 'mp3' %}">Мои плейлисты</a>
+                    <a class="dropdown-item" href="{% url 'add-song' %}">Добавить релиз</a>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item" href="{% url 'logout' %}">Выход</a>
+                </div>
+            </li>
+        </div>
+        {% else %}
+        <div class="navbar-nav" id="auth-bar">
+            <a class="nav-link active" id="reg" href="{% url 'register' %}">Регистрация</a><a class="nav-link active" id="log" href="{% url 'login' %}">Вход</a>
+        </div>
+        {% endif %}
+    </div>
+
+</nav>
+
+<script>
+
+    document.getElementById('navbarDropdown').onclick = function() {
+        var card = document.getElementById('music-card');
+        card.style.width = 935+'px';
+        window.onclick = function () {
+            card.style.width = 1300+'px';
+        }
+
+
+    }
+
+
+
+</script>
+

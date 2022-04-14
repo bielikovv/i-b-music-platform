@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+    function getAddForm() {
+        document.getElementById('music-add-card').style.display = 'block';
+        document.getElementById('add-music-button').style.display = 'none';
+
+
+    }
+    function getMusic() {
+        document.getElementById('music-add-card').style.display = 'none';
+        document.getElementById('add-music-button').style.display = 'block';
+    }
+
+
+
+    function getUrl(id_js) {
+        window.location = 'playlist/' + id_js;
+    }
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div id="music-add-card">
+            <form enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary btn-sm">Добавить</button>
+                <button type="button" onclick="getMusic()" class="btn btn-primary btn-sm">Скрыть</button>
+            </form>
+        </div>
+
+
+        <div id="music-card" class="music-card">
+            <div class="card-body">
+
+                <h1 class="card-title">Мои плейлисты:</h1>
+                <button type="submit" id="add-music-button" onclick="getAddForm()" class="btn btn-primary btn-sm">Добавить плейлист</button>
+                <br>
+
+                {% for item in track %}
+                <div id="playlist-card" onclick="getUrl('{{ item.pk }}')" class="playlist-card">
+                    {% if item.envelope %}
+                    <img id="envelope-playlist" src="{{ item.envelope.url }}">
+                    {% endif %}
+                    <h3 class="card-title" id="playlist-card-title">{{ item.title }}</h3>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
