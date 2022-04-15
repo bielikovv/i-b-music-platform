@@ -25,8 +25,8 @@ def show_mp3(request):
 
 def show_playlist(request, playlist_id):
     playlist = Playlists.objects.get(pk=playlist_id)
-    compositions = playlist.playlist_composition.all()
-    return render(request, 'musiccloud/current_playlist.html', {'playlist':playlist, 'compositions':compositions})
+
+    return render(request, 'musiccloud/current_playlist.html', {'playlist':playlist})
 
 
 

@@ -16,8 +16,14 @@
                     {% if playlist.playlist_envelope %}
                     <img id="envelope-current-playlist" src="{{ playlist.playlist_envelope.url }}">
                     {% endif %}
-                    {% for music in compositions %}
-                    <audio src="{{ music.url }}"></audio>
+                    {% for music in playlist.playlist_composition.all %}
+                    <div id="playlist-composition-current">
+                        {% if music.composition_file %}
+                        <h5 class="card-title">{{ music.composition_title }}</h5>
+                        <h6 class="card-title">{{ music.composition_singer.nickname }}</h6>
+                        <audio src="{{ music.composition_file.url }}" id="audio-playlist" controls></audio>
+                        {% endif %}
+                    </div>
                     {% endfor %}
                 </div>
             </div>
