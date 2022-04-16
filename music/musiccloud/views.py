@@ -6,7 +6,14 @@ from django.db.models import Q
 
 def show_main_page(request):
     items = Composition.objects.all()
-    return render(request, 'musiccloud/main_page.html', {'items': items})
+    playlist = Playlists.objects.filter(playlist_user=request.user)
+    # if request.method == 'POST':
+    #     form = AddCompToPlaylistForm(request.POST, playlist_user=request.user)
+    #     if form.is_valid():
+    #         pass
+    # else:
+    #     form = AddCompToPlaylistForm(playlist_user=request.user)
+    return render(request, 'musiccloud/main_page.html', {'items': items, 'playlist':playlist})
 
 
 

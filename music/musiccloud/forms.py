@@ -59,6 +59,7 @@ class AddAlbumForm(forms.ModelForm):
 
 
 
+
 class AddCompositionForm(forms.ModelForm):
     composition_user = forms.ModelChoiceField(label='', empty_label=None, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
     composition_title = forms.CharField(label='Title', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
@@ -70,5 +71,15 @@ class AddCompositionForm(forms.ModelForm):
         model = Composition
         fields = ['composition_file', 'composition_title', 'composition_envelope', 'composition_singer', 'composition_user']
 
-
+# class AddCompToPlaylistForm(forms.ModelForm):
+#     def __init__(self, playlist_user, *args, **kwargs):
+#         self.user = playlist_user
+#         tnx = Playlists.objects.all(playlist_user=self.user)
+#         return tnx
+#
+#     playlist_composition = forms.ModelChoiceField(label='Плейлист:', empty_label=None, queryset=Playlists.objects.all(playlist_user=tnx), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
+#
+#     class Meta:
+#         model = Composition
+#         fields = ('playlist_composition', )
 
