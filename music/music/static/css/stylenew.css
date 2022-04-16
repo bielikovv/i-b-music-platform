@@ -230,10 +230,6 @@ select#id_playlist_user{
     border-top: 1px solid rgba(255,255,255,.15);
 }
 
-#playlist-current-card{
-    display: block;
-}
-
 #back-playlist-card{
     border: 0px solid;
     width: 280px;
@@ -252,7 +248,6 @@ select#id_composition_singer{
     width: 300px;
     height: 300px;
     object-fit: cover;
-    margin: 20px;
 }
 
 .music-current-card{
@@ -302,18 +297,6 @@ select#id_composition_singer{
 .dropdown-item:hover{
     background-color: rgba(0, 0, 0, 0);
     color: #2c3e56;
-}
-
-#playlist-composition-current{
-    margin: 20px;
-    border: 1px solid #ffffff;
-    padding: 10px;
-    display: block;
-}
-
-#audio-playlist{
-    display: inline-block;
-    width: 600px;
 }
 
 .navbar-brand{
