@@ -1,19 +1,25 @@
 from django.contrib.auth import logout, login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 from django.db.models import Q
+from django.views.generic.edit import FormView
+
 
 def show_main_page(request):
-    items = Composition.objects.all()
-    playlist = Playlists.objects.filter(playlist_user=request.user)
+    items = Composition.objects.filter(composition_is_published=True).order_by('-composition_date')
+    if request.user.is_authenticated:
+        playlist = Playlists.objects.filter(playlist_user=request.user)
+        return render(request, 'musiccloud/main_page.html', {'items': items, 'playlist': playlist})
+
     # if request.method == 'POST':
     #     form = AddCompToPlaylistForm(request.POST, playlist_user=request.user)
     #     if form.is_valid():
     #         pass
     # else:
     #     form = AddCompToPlaylistForm(playlist_user=request.user)
-    return render(request, 'musiccloud/main_page.html', {'items': items, 'playlist':playlist})
+    return render(request, 'musiccloud/main_page.html', {'items': items})
 
 
 
@@ -49,8 +55,18 @@ def show_user_form(request):
 
 
 
-def add_album(requset):
-    return render(requset, 'musiccloud/add_album.html')
+def add_album(request):
+    if request.method == 'POST':
+        form1 = AddAlbumForm(request.POST, request.FILES)
+        # form2 = AddAlbumCompositionsForm(request.POST, request.FILES)
+        if form1.is_valid():
+            form1.save()
+            # form2.save()
+            return redirect('main_page')
+    else:
+        form1 = AddAlbumForm(initial={'album_user': request.user})
+        # form2 = AddAlbumCompositionsForm()
+    return render(request, 'musiccloud/add_album.html', {'form1': form1})
 
 
 

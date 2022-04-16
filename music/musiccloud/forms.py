@@ -56,20 +56,36 @@ class AddPlaylistForm(forms.ModelForm):
 class AddAlbumForm(forms.ModelForm):
     album_title = forms.CharField(label='Album name', widget=forms.TextInput(attrs={'class': 'form-control '}))
     album_envelope = forms.FileField(label='Album envelope', widget=forms.FileInput(attrs={'class': 'form-control'}))
+    album_user = forms.ModelChoiceField(label='', empty_label=None, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
+    album_is_published = forms.BooleanField(label='Release', initial=True, required=False)
 
+    class Meta:
+        model = Album
+        fields = ['album_title', 'album_envelope', 'album_user', 'album_is_published']
+
+
+
+# class AddAlbumCompositionsForm(forms.ModelForm):
+#     composition_file = forms.FileField(label='Song file', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm', 'multiple': True}))
+#     composition_album = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
+#
+#     class Meta:
+#         model = Composition
+#         fields = ('composition_file', 'composition_album')
 
 
 
 class AddCompositionForm(forms.ModelForm):
     composition_user = forms.ModelChoiceField(label='', empty_label=None, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
     composition_title = forms.CharField(label='Title', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
-    composition_envelope = forms.FileField(label='Envelope', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm'}))
+    composition_envelope = forms.FileField(label='Envelope', widget=forms.ClearableFileInput(attrs={'class': 'form-control form-control-sm'}))
     composition_file = forms.FileField(label='Song file', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm'}))
     composition_singer = forms.ModelChoiceField(label='', empty_label=None, queryset=Profile.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
+    composition_is_published = forms.BooleanField(label='Release', initial=True, required=False)
 
     class Meta:
         model = Composition
-        fields = ['composition_file', 'composition_title', 'composition_envelope', 'composition_singer', 'composition_user']
+        fields = ['composition_file', 'composition_title', 'composition_envelope', 'composition_singer', 'composition_user', 'composition_is_published']
 
 # class AddCompToPlaylistForm(forms.ModelForm):
 #     def __init__(self, playlist_user, *args, **kwargs):

@@ -8,7 +8,6 @@ class PlaylistsAdmin(admin.ModelAdmin):
 
 
 
-
 admin.site.register(Composition)
 admin.site.register(Profile)
 admin.site.register(Album)
