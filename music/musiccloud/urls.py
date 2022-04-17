@@ -12,6 +12,7 @@ urlpatterns = [
     path('add-release/album', add_album, name="add-album"),
     path('add-release/composition', add_composition, name="composition"),
     path('profile', show_user_form, name="profile"),
+    path('add-release/album/albcompadd/', add_compositions_to_album, name="albcompadd"),
 
 
 ]

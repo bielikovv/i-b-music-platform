@@ -13,13 +13,11 @@
                 <h5 class="card-title">{{ item.composition_title }}</h5>
                 <h6 class="card-title">{{ item.composition_singer.nickname }}</h6>
                 <audio src="{{ item.composition_file.url }}" id="audio-area" controls></audio>
+
                 <form action="" method="post">
-                    <select name="" id="select-playlist-main">
-                        {% for pl in playlist %}
-                        <option value="">{{ pl.playlist_title }}</option>
-                        {% endfor %}
-                    </select>
-                    <button type="button" id="select-main-button" onclick="acceptSelectPlaylist()" class="btn btn-primary btn-sm">Add</button>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" id="select-main-button" class="btn btn-primary btn-sm">Add</button>
                 </form>
             </div>
             {% endfor %}

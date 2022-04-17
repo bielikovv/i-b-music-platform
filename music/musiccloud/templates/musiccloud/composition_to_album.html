@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+
+    function getCopy() {
+        let form = document.getElementById('empty-form').cloneNode(true);
+        let block = document.getElementById('comp-to-alb');
+        block.append(form)
+    }
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div id="music-to-album-card" >
+            <form enctype="multipart/form-data" method="post">
+                <div id="comp-to-alb">
+                    <div id='empty-form'>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                <button type="button" id="add-form-btn" onclick="getCopy()" class="btn btn-primary btn-sm">Add one more</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
