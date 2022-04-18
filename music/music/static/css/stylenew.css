@@ -285,6 +285,101 @@ select#id_composition_singer{
     border-color: #ffffff;
 }
 
+.hidden{
+    display: none;
+}
+
+#composition-card{
+    border: 1px solid #ffffff;
+    padding: 15px;
+    width: 98%;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+    -webkit-transition: all 0.25s ease-out;
+    background-color: rgba(75, 124, 120, 15%);
+}
+
+#composition-card:hover{
+    -webkit-transform: scale(1.025);
+    -ms-transform: scale(1.025);
+    transform: scale(1.025);
+    background-color: rgba(0, 0, 0, 10%);
+}
+
+#album-composition-current{
+    border: 1px solid #ffffff;
+    padding: 15px;
+    width: 98%;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+    -webkit-transition: all 0.25s ease-out;
+    background-color: rgba(75, 124, 120, 15%);
+}
+
+#album-composition-current:hover{
+    -webkit-transform: scale(1.025);
+    -ms-transform: scale(1.025);
+    transform: scale(1.025);
+    background-color: rgba(0, 0, 0, 10%);
+}
+
+#audio-playlist-single{
+    width: 100%;
+}
+
+#composition-current-card{
+    text-align: center;
+    color: #ffffff;
+}
+
+#single-current-composition-envelope{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+
+}
+
+#audio-panel{
+    border: 1px solid #ffffff;
+    padding: 15px;
+}
+
+#my-single-form-audio{
+    width: 100%;
+}
+
+#envelope-album{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+#album-card{
+    border: 1px solid #ffffff;
+    padding: 15px;
+    width: 280px;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+    -webkit-transition: all 0.25s ease-out;
+    background-color: rgba(75, 124, 120, 15%);
+}
+
+#album-card:hover{
+    -webkit-transform: scale(1.075);
+    -ms-transform: scale(1.075);
+    transform: scale(1.075);
+    background-color: rgba(0, 0, 0, 10%);
+}
+
+select#id_composition_album{
+    display: none;
+}
+
 .dropdown-item{
     color: #ffffff;
 

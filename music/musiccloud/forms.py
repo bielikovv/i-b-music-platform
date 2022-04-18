@@ -90,18 +90,12 @@ class AddCompositionForm(forms.ModelForm):
         model = Composition
         fields = ['composition_file', 'composition_title', 'composition_envelope', 'composition_singer', 'composition_user', 'composition_is_published']
 
-class AddCompToPlaylistForm(forms.ModelForm):
-    playlist_composition = forms.ModelChoiceField(label='Плейлист:', empty_label=None, queryset=Playlists.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
-
-    def __init__(self, *args, **kwargs):
-        user = kwargs.pop('playlist_user', None)
-        super().__init__(*args, **kwargs)
-        if user:
-            self.fields['playlist_composition'].queryset = Playlists.objects.filter(playlist_user=user)
-
-    class Meta:
-        model = Composition
-        fields = ['playlist_composition', ]
+# class AddCompToPlaylistForm(forms.ModelForm):
+#     playlist_composition = forms.ModelChoiceField(label='Плейлист:', empty_label=None, queryset=Playlists.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
+#
+#     class Meta:
+#         model = Composition
+#         fields = ['playlist_composition', ]
 
 
 

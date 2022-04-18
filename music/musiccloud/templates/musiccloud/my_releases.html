@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+
+    function getUrlAlbum(id_js) {
+        window.location = 'album/' + id_js;
+    }
+
+    function getUrlComposition(id_js) {
+        window.location = 'composition/' + id_js;
+    }
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div id="music-card" class="music-card">
+            <div class="card-body">
+                <h1 class="card-title">My releases:</h1>
+                <br>
+                <h3>Albums:</h3>
+                {% for item in albums %}
+                <div id="album-card" onclick="getUrlAlbum('{{ item.pk }}')" class="album-card">
+                    {% if item.album_envelope %}
+                    <img id="envelope-album" src="{{ item.album_envelope.url }}">
+                    {% endif %}
+                    <h3 class="card-title" id="album-card-title">{{ item.album_title }}</h3>
+                    <h6 class="card-title" >{{ item.date_album }}</h6>
+                </div>
+                {% endfor %}
+                <br>
+                <br>
+                <h3>Singles:</h3>
+                {% for item in compositions %}
+                <div id="composition-card" onclick="getUrlComposition('{{ item.pk }}')" class="composition-card">
+                    <h3 class="card-title" id="composition-card-title">{{ item.composition_title }}</h3>
+                    <h6 class="card-title" >{{ item.composition_date }}</h6>
+                    <audio id="my-single-form-audio" src="{{ item.composition_file.url }}" controls></audio>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

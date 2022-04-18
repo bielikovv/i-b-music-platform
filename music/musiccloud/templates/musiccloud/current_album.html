@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+function showSingleComposition(id_js) {
+    window.location.href = 'http://127.0.0.1:8000/my-releases/composition/' + id_js
+}
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div id="music-current-card" class="music-current-card">
+            <div class="card-body">
+                <div id="playlist-current-card" class="playlist-card">
+                    {% if album.album_envelope %}
+                    <img id="envelope-current-playlist" src="{{ album.album_envelope.url }}">
+                    {% endif %}
+                    <h1 class="card-title">{{ album.album_title }}</h1>
+                    {% for music in compositions %}
+                    <div id="album-composition-current" onclick="showSingleComposition('{{ music.pk }}')">
+                        {% if music.composition_file %}
+                        <h5 class="card-title">{{ music.composition_title }}</h5>
+                        <h6 class="card-title">{{ music.composition_singer.nickname }}</h6>
+                        <audio src="{{ music.composition_file.url }}" id="audio-playlist" controls></audio>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

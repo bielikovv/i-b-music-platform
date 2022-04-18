@@ -33,10 +33,12 @@
                     <div class="fieldWrapper">
                         {{ form.album_user.errors }}
                         <label for="{{ form.subject.id_for_label }}">User</label>
-                        {{ form.album_user }}
+                        <div class="hidden">
+                            {{ form.album_user }}
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm">Add</button>
-                    <button type="submit" onclick="changeUrl()" class="btn btn-primary btn-sm">Add compositions to last created album</button>
+                    <button type="submit" onclick="changeUrl()" id="changing-url-btn" class="btn btn-primary btn-sm">Add compositions to last created album</button>
                 </form>
             </div>
         </div>

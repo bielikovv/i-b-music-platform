@@ -14,14 +14,14 @@ def show_main_page(request):
         playlist = Playlists.objects.filter(playlist_user=request.user)
         return render(request, 'musiccloud/main_page.html', {'items': items, 'playlist': playlist})
 
-    if request.method == 'POST':
-        form = AddCompToPlaylistForm(request.POST, playlist_user=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect('main_page')
-    else:
-        form = AddCompToPlaylistForm(playlist_user=request.user)
-    return render(request, 'musiccloud/main_page.html', {'items': items, 'form': form})
+    # if request.method == 'POST':
+    #     form = AddCompToPlaylistForm(request.POST, playlist_user=request.user)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('main_page')
+    # else:
+    #     form = AddCompToPlaylistForm(playlist_user=request.user)
+    return render(request, 'musiccloud/main_page.html', {'items': items, })
 
 
 
@@ -68,6 +68,19 @@ def add_album(request):
 
 
 
+def show_current_album(request, album_id):
+    album = Album.objects.get(pk=album_id)
+    compositions = Composition.objects.filter(composition_user=request.user, composition_album=album_id)
+    return render(request, 'musiccloud/current_album.html', {'album': album, 'compositions': compositions})
+
+
+
+def show_current_composition(request, composition_id):
+    compositions = Composition.objects.get(pk=composition_id)
+    return render(request, 'musiccloud/current_composition.html', {'compositions': compositions})
+
+
+
 def add_compositions_to_album(request, album_title):
     alb = Album.objects.get(album_title=album_title, album_user=request.user)
     pk = alb.pk
@@ -80,6 +93,13 @@ def add_compositions_to_album(request, album_title):
     else:
         form = AddAlbumCompositionsForm(initial={'composition_album': pk, 'composition_user':request.user, 'composition_singer':request.user.profile})
     return render(request, 'musiccloud/composition_to_album.html', {'form': form, 'compositions': added_compositions, 'album':alb})
+
+
+
+def show_my_releases(request):
+    albums = Album.objects.filter(album_user=request.user)
+    compositions = Composition.objects.filter(composition_user=request.user, composition_album=None)
+    return render(request, 'musiccloud/my_releases.html', {'albums': albums, 'compositions': compositions})
 
 
 

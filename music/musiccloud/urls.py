@@ -14,6 +14,9 @@ urlpatterns = [
     path('profile/', show_user_form, name="profile"),
     path('add-release/album/albcompadd/<str:album_title>/', add_compositions_to_album, name="albcompadd"),
     path('add-release/album/albcompadd/<str:album_title>/confirm-release/', confirm_release, name="confirm_release"),
+    path('my-releases/', show_my_releases, name="my_releases"),
+    path('my-releases/album/<int:album_id>/', show_current_album, name="current-album"),
+    path('my-releases/composition/<int:composition_id>/', show_current_composition, name="current-composition"),
 
 
 ]
