@@ -57,27 +57,24 @@ class AddAlbumForm(forms.ModelForm):
     album_title = forms.CharField(label='Album name', widget=forms.TextInput(attrs={'class': 'form-control '}))
     album_envelope = forms.FileField(label='Album envelope', widget=forms.FileInput(attrs={'class': 'form-control'}))
     album_user = forms.ModelChoiceField(label='', empty_label=None, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
-    album_is_published = forms.BooleanField(label='Release', initial=False, required=False)
 
     class Meta:
         model = Album
-        fields = ['album_title', 'album_envelope', 'album_user', 'album_is_published']
+        fields = ['album_title', 'album_envelope', 'album_user']
 
 
 
 class AddAlbumCompositionsForm(forms.ModelForm):
+    composition_title = forms.CharField(label='Title', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
     composition_file = forms.FileField(label='Song file', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm', 'multiple': True}))
+    composition_envelope = forms.FileField(label='Envelope', widget=forms.ClearableFileInput(attrs={'class': 'form-control form-control-sm'}))
     composition_album = forms.ModelChoiceField(label='', empty_label=None, queryset=Album.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
-
-    def __init__(self, *args, **kwargs):
-        user = kwargs.pop('composition_user', None)
-        super().__init__(*args, **kwargs)
-        if user:
-            self.fields['composition_album'].queryset = Album.objects.filter(album_user=user)
+    composition_user = forms.ModelChoiceField(label='', empty_label=None, queryset=User.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
+    composition_singer = forms.ModelChoiceField(label='', empty_label=None, queryset=Profile.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
 
     class Meta:
         model = Composition
-        fields = ('composition_file', 'composition_album')
+        fields = ('composition_title', 'composition_file', 'composition_envelope', 'composition_album', 'composition_user', 'composition_singer')
 
 
 
@@ -102,8 +99,11 @@ class AddCompToPlaylistForm(forms.ModelForm):
         if user:
             self.fields['playlist_composition'].queryset = Playlists.objects.filter(playlist_user=user)
 
-
     class Meta:
         model = Composition
         fields = ['playlist_composition', ]
+
+
+
+
 

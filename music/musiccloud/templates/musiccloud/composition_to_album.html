@@ -4,16 +4,54 @@
 
 <script>
 
-    function getCopy() {
-        let form = document.getElementById('empty-form').cloneNode(true);
-        let block = document.getElementById('comp-to-alb');
-        block.append(form)
+    function hideAddForm() {
+        let form = document.getElementById('music-to-album-card');
+        let addBtn = document.getElementById('add-form-btn');
+        let showBtn = document.getElementById('show-add-form-btn');
+        let confirmationButton = document.getElementById('go-to-confirm');
+        form.style.display = 'none';
+        addBtn.style.display = 'none';
+        showBtn.style.display = 'block';
+        confirmationButton.style.display = 'block';
+    }
+
+    function showAddForm() {
+        let form = document.getElementById('music-to-album-card');
+        let addBtn = document.getElementById('add-form-btn');
+        let showBtn = document.getElementById('show-add-form-btn');
+        let confirmationButton = document.getElementById('go-to-confirm');
+        form.style.display = 'block';
+        addBtn.style.display = 'block';
+        showBtn.style.display = 'none';
+        confirmationButton.style.display = 'none';
+    }
+
+    function goToConfirm() {
+        window.location = 'confirm-release'
     }
 </script>
 
 
 <div class="container">
     <div class="row">
+        <div id="alb" >
+            <h3 class="card-title">{{ album.album_title }}</h3>
+            <img src="{{ album.album_envelope.url }}" style="width: 300px" alt="">
+            <button type="button" id="go-to-confirm" onclick="goToConfirm()" style="display: none" class="btn btn-primary btn-sm">Confirm</button>
+        </div>
+
+
+        <div id="comp" >
+            <div id="crd">
+                {% for el in compositions %}
+                <h3 class="card-title">{{ el.composition_title }}</h3>
+                <h5 class="card-title">{{ el.composition_singer.nickname }}</h5>
+                <audio src="{{ el.composition_file.url }}" controls></audio>
+                {% endfor %}
+            </div>
+        </div>
+
+
         <div id="music-to-album-card" >
             <form enctype="multipart/form-data" method="post">
                 <div id="comp-to-alb">
@@ -22,10 +60,11 @@
                         {{ form.as_p }}
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-sm">Save</button>
-                <button type="button" id="add-form-btn" onclick="getCopy()" class="btn btn-primary btn-sm">Add one more</button>
+                <button type="submit" id="add-form-btn" onclick="" class="btn btn-primary btn-sm">Save and add one more</button>
             </form>
+            <button type="submit" id="hide-add-form-btn" onclick="hideAddForm()" class="btn btn-primary btn-sm">End adding</button>
         </div>
+            <button type="submit" id="show-add-form-btn" onclick="showAddForm()" style="display: none" class="btn btn-primary btn-sm">Continue adding</button>
     </div>
 </div>
 

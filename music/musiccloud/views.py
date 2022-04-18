@@ -62,24 +62,42 @@ def add_album(request):
         form = AddAlbumForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('albcompadd')
     else:
         form = AddAlbumForm(initial={'album_user': request.user})
-    return render(request, 'musiccloud/add_album.html', {'form': form,})
+    return render(request, 'musiccloud/add_album.html', {'form': form})
 
 
 
-def add_compositions_to_album(request):
-    AddAlbumCompositionsFormSet = formset_factory(AddAlbumCompositionsForm)
+def add_compositions_to_album(request, album_title):
+    alb = Album.objects.get(album_title=album_title, album_user=request.user)
+    pk = alb.pk
+    added_compositions = Composition.objects.filter(composition_album=pk).order_by('-composition_date')
+
     if request.method == 'POST':
-        form = AddAlbumCompositionsFormSet(request.POST, request.FILES)
+        form = AddAlbumCompositionsForm(request.POST, request.FILES)
         if form.is_valid():
-            for item in form:
-                item.save()
-            return redirect('main_page')
+            form.save()
     else:
-        form = AddAlbumCompositionsFormSet()
-    return render(request, 'musiccloud/composition_to_album.html', {'form': form})
+        form = AddAlbumCompositionsForm(initial={'composition_album': pk, 'composition_user':request.user, 'composition_singer':request.user.profile})
+    return render(request, 'musiccloud/composition_to_album.html', {'form': form, 'compositions': added_compositions, 'album':alb})
+
+
+
+def confirm_release(request, album_title):
+    alb = Album.objects.get(album_title=album_title, album_user=request.user)
+    pk = alb.pk
+    added_compositions = Composition.objects.filter(composition_album=pk).order_by('-composition_date')
+    if request.method == 'POST':
+        album = Album.objects.get(album_title=album_title, album_user=request.user)
+        compositions = Composition.objects.filter(composition_album=pk, composition_user=request.user)
+        album.album_is_published = True
+        album.save()
+        for item in compositions:
+            item.composition_is_published = True
+            item.save()
+
+        return redirect('main_page')
+    return render(request, 'musiccloud/confirm_release.html', {'added_comp':added_compositions, 'album':alb})
 
 
 

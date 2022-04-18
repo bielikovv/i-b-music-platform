@@ -8,7 +8,7 @@ class Album(models.Model):
     album_envelope = models.ImageField(verbose_name='Envelope', upload_to='photo/%Y/%m/%d', null=True)
     album_title = models.CharField(max_length=128, verbose_name='Title', default='NoName', blank=True)
     date_album = models.DateTimeField(auto_now_add=True, verbose_name='Album release date')
-    album_is_published = models.BooleanField(verbose_name='Released', default=True)
+    album_is_published = models.BooleanField(verbose_name='Released', default=False)
 
     def __str__(self):
         return self.album_title
@@ -35,7 +35,7 @@ class Composition(models.Model):
     composition_album = models.ForeignKey(Album, verbose_name='Album', blank=True, on_delete=models.CASCADE, null=True)
     composition_date = models.DateTimeField(auto_now_add=True, verbose_name='Song release date', null=True)
     composition_singer = models.ForeignKey('Profile', on_delete=models.PROTECT, null=True, verbose_name='Singer')
-    composition_is_published = models.BooleanField(verbose_name='Released', default=True)
+    composition_is_published = models.BooleanField(verbose_name='Released', default=False)
 
     def __str__(self):
         return self.composition_title

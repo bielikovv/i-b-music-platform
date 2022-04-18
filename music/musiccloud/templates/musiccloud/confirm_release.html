@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+
+
+
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div id="alb" >
+            <form action="" method="post">
+                {% csrf_token %}
+                <h3 class="card-title">{{ album.album_title }}</h3>
+                <img src="{{ album.album_envelope.url }}" style="width: 300px" alt="">
+                <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
+            </form>
+        </div>
+
+
+        <div id="comp" >
+            <div id="crd">
+                {% for el in added_comp %}
+                <h3 class="card-title">{{ el.composition_title }}</h3>
+                <h5 class="card-title">{{ el.composition_singer.nickname }}</h5>
+                <audio src="{{ el.composition_file.url }}" controls></audio>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
