@@ -1,456 +1,45 @@
-body{
-    background: linear-gradient(45deg, #2c3e56,#4b7c78,#66c193);
+
+html, body{
+    height: 100%;
+    width: 100%;
     background-attachment: fixed;
-    background-size: 100% 100%;
 }
 
-#navbarDropdown{
-    border-color: #ffffff;
-    color: #ffffff;
-    border-style: solid;
-    padding: 5px 30px 5px 30px;
-    border-radius: 15px;
-    border-width: 1px;
-    margin-right: 40px;
-    margin-top: 30px;
-    -webkit-transition: all 0.25s ease-out;
-    width: 350px;
-    text-align: center;
+
+body{
+    background-image: url('https://srv2.imgonline.com.ua/result_img/imgonline-com-ua-Blur-UnNwgioAqW.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+
+
 }
 
-#navbarDropdown:hover{
-    -webkit-transform: scale(1.05);
-}
-
-.navbar{
-    margin-bottom: 30px;
-}
-
-#music-card{
-    border-radius: 0px;
+#card-of-porfile{
+    width: 100%;
+    background-color: #f4759b;
     opacity: 95%;
-    color: #ffffff;
-    border-style: solid;
-    border-width: 1px;
-    width: 1275px;
-    -webkit-transition: all 0.10s linear;
-
-
-}
-.btn-outline-success{
-    -webkit-transition: all 0.25s ease-out;
-}
-
-.btn-outline-success:hover{
-    background-color: rgba(0, 0, 0, 0);
-    -webkit-transform: scale(1.05);
-}
-
-.btn-primary:hover{
-    background-color: rgba(0, 0, 0, 0);
-    -webkit-transform: scale(1.15);
-    border-color: #ffffff;
-}
-
-#add-music-button{
-    background-color: rgba(28,28,28,0);
-    border-color: #ffffff;
-    margin-bottom: 20px;
-    -webkit-transition: all 0.25s ease-out;
-}
-
-#add-music-button:hover{
-    -webkit-transform: scale(1.05);
-    border-color: #ffffff;
-}
-
-#music-add-card{
-    display: none;
-    opacity: 95%;
-
-}
-
-.dropdown-menu{
-    border-radius: 0px;
-    position: relative;
-    z-index: 10;
-    background: linear-gradient(45deg, #4b7c78,#66c193);
-    width: 355px;
-    margin-top: 10px;
-    text-align: center;
-    border-color: #ffffff;
-    -webkit-transition: all 0.25s ease-out;
-}
-
-.album-add-card{
-    color: #ffffff;
-}
-
-#adding-card-music{
-    width: 600px;
-    object-fit: cover;
-    height: 500px;
-    -webkit-transition: all 0.25s ease-out;
-    cursor: pointer;
-}
-
-#adding-card-music:hover{
-    -webkit-transform: scale(1.1);
-}
-
-.adding-card-music{
-    width: 600px;
-    color: #ffffff;
-    text-align: center;
-    margin-left: 100px;
-}
-
-.card-adding{
-    display: inline-block;
-}
-
-.album-add-card{
-
-    width: 600px;
-    text-align: center;
-}
-
-#album-add-card{
-    width: 600px;
-    -webkit-transition: all 0.25s ease-out;
-    height: 500px;
-    object-fit: cover;
-    cursor: pointer;
-
-}
-#album-add-card:hover{
-    -webkit-transform: scale(1.1);
-}
-
-.dropdown-menu:hover{
-    -webkit-transform: scale(1.1);
-}
-
-#reg{
-    border-style: solid;
-    border-width: 1px;
-    border-color: #ffffff;
-    border-radius: 15px;
-    color: #ffffff;
-    margin-right: 40px;
-    margin-top: 30px;
-    -webkit-transition: all 0.25s ease-out;
-}
-
-#reg:hover{
-    -webkit-transform: scale(1.05);
-
-}
-
-#log{
-    border-style: solid;
-    border-width: 1px;
-    border-color: #ffffff;
-    border-radius: 15px;
-    color: #ffffff;
-    margin-right: 40px;
-    margin-top: 30px;
-    -webkit-transition: all 0.25s ease-out;
-}
-
-#register-form{
-    border-style: solid;
-    border-width: 1px;
-    border-color: #ffffff;
-    border-radius: 0px;
-    color: #ffffff;
-    padding: 20px;
-    width: 50%;
-}
-
-#log:hover{
-    -webkit-transform: scale(1.05);
-
-}
-
-#login-form{
-   border-style: solid;
-    border-width: 1px;
-    border-color: #ffffff;
-    border-radius: 0px;
-    color: #ffffff;
-    padding: 20px;
-    width: 50%;
-    -webkit-transition: all 0.25s ease-in-out;
-}
-
-#login-form:hover{
-    width: 100%;
-
-}
-
-#rec-composition-table{
-    border: 1px solid #ffffff;
-    padding: 15px;
-    width: 98%;
-    cursor: pointer;
-    display: inline-block;
-    margin: 10px;
-    -webkit-transition: all 0.25s ease-out;
-    background-color: rgba(75, 124, 120, 15%);
-}
-
-#rec-composition-table:hover{
-    -webkit-transform: scale(1.025);
-    -ms-transform: scale(1.025);
-    transform: scale(1.025);
-    background-color: rgba(0, 0, 0, 10%);
-}
-
-#empty-form .form-control[name=composition_envelope]:not(:disabled):not([readonly]){
-    display: none;
-}
-
-#music-main-card{
-    color: #ffffff;
-    border-style: solid;
-    border-radius: 0px;
-    border-color: #ffffff;
-    border-width: 1px;
-    margin-top: 25px;
-    padding: 25px;
-    width: 1300px;
-    display: inline-block;
-}
-
-
-#playlist-card{
-    border: 1px solid #ffffff;
-    padding: 15px;
-    width: 280px;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-    margin: 10px;
-    -webkit-transition: all 0.25s ease-out;
-    background-color: rgba(75, 124, 120, 15%);
-}
-
-select#id_playlist_user{
-    display: none;
-}
-
-.dropdown-divider{
-    background-color: #ffffff;
-    border-top: 1px solid rgba(255,255,255,.15);
-}
-
-#back-playlist-card{
-    border: 0px solid;
-    width: 280px;
-
-}
-
-select#id_composition_user{
-    display: none;
-}
-
-select#id_composition_singer{
-    display: none;
-}
-
-#envelope-current-playlist{
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-}
-
-.music-current-card{
-    color: #ffffff;
-    border: 2px solid #ffffff;
-}
-
-#playlist-card:hover{
-    -webkit-transform: scale(1.075);
-    -ms-transform: scale(1.075);
-    transform: scale(1.075);
-    background-color: rgba(0, 0, 0, 10%);
-
-}
-
-#envelope-playlist{
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
-
-#find-my-list{
-    color: #ffffff;
-    border-color: #ffffff;
-}
-
-#log-button{
-    background-color: rgba(0, 0, 0, 0);
-    border-color: #ffffff;
-}
-
-#reg-button{
-    background-color: rgba(0, 0, 0, 0);
-    border-color: #ffffff;
-}
-
-.hidden{
-    display: none;
-}
-
-#composition-card{
-    border: 1px solid #ffffff;
-    padding: 15px;
-    width: 98%;
-    cursor: pointer;
-    display: inline-block;
-    margin: 10px;
-    -webkit-transition: all 0.25s ease-out;
-    background-color: rgba(75, 124, 120, 15%);
-}
-
-#composition-card:hover{
-    -webkit-transform: scale(1.025);
-    -ms-transform: scale(1.025);
-    transform: scale(1.025);
-    background-color: rgba(0, 0, 0, 10%);
-}
-
-#album-composition-current{
-    border: 1px solid #ffffff;
-    padding: 15px;
-    width: 98%;
-    cursor: pointer;
-    display: inline-block;
-    margin: 10px;
-    -webkit-transition: all 0.25s ease-out;
-    background-color: rgba(75, 124, 120, 15%);
-}
-
-#album-composition-current:hover{
-    -webkit-transform: scale(1.025);
-    -ms-transform: scale(1.025);
-    transform: scale(1.025);
-    background-color: rgba(0, 0, 0, 10%);
-}
-
-#audio-playlist-single{
-    width: 100%;
-}
-
-#composition-current-card{
-    text-align: center;
-    color: #ffffff;
-}
-
-#single-current-composition-envelope{
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
-
-}
-
-#audio-panel{
-    border: 1px solid #ffffff;
-    padding: 15px;
-}
-
-#my-single-form-audio{
-    width: 100%;
-}
-
-#envelope-album{
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
-
-#album-card{
-    border: 1px solid #ffffff;
-    padding: 15px;
-    width: 280px;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-    margin: 10px;
-    -webkit-transition: all 0.25s ease-out;
-    background-color: rgba(75, 124, 120, 15%);
-}
-
-#album-card:hover{
-    -webkit-transform: scale(1.075);
-    -ms-transform: scale(1.075);
-    transform: scale(1.075);
-    background-color: rgba(0, 0, 0, 10%);
-}
-
-select#id_composition_album{
-    display: none;
-}
-
-.dropdown-item{
-    color: #ffffff;
-
-}
-
-#playlist-current-card{
-    display: block;
-}
-
-.dropdown-item:hover{
-    background-color: rgba(0, 0, 0, 0);
-    color: #2c3e56;
-}
-
-.navbar-brand{
-    color: #ffffff;
-    border-style: solid;
-    padding: 1px 30px 1px 30px;
-    border-radius: 15px;
-    margin-left: 40px;
-    margin-top: 30px;
-    border-width: 1px;
-    -webkit-transition: all 0.25s ease-out;
-}
-
-.navbar-brand:hover{
-    color: #ffffff;
-    -webkit-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    transform: scale(1.05);
-
-}
-
-#music-add-card{
-    color: #ffffff;
-    padding: 15px;
-    border-style: solid;
-    border-radius: 0px;
-    border-color: #ffffff;
-    border-width: 1px;
-    position: relative;
-
-}
-
-.btn-primary{
-    background-color: rgba(0, 0, 0, 0);
-    border-color: #ffffff;
-    -webkit-transition: all 0.25s ease-out;
+    padding: 40px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
 }
 
 #profile-photo{
+    object-fit: cover;
     width: 350px;
     height: 350px;
-    object-fit: cover;
-    text-align: center;
-    margin-bottom: 15px;
+}
+
+#profile-card{
+    width: 400px;
+    color: #ffffff;
+    padding-top: 20px;
+    margin-left: 20px;
+}
+
+#update-form{
+    margin-top: 150px;
+    display: none;
 }
 
 #redaction-card{
@@ -458,31 +47,45 @@ select#id_composition_album{
     color: #ffffff;
 }
 
-#open-form-button:active{
+.navbar{
+    margin-bottom: 30px;
+}
+
+.navbar-nav .dropdown-menu{
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    border-width: 0px;
+    margin-left: 40px;
+    text-align: right;
+}
+
+.dropdown-item{
+    color: #ffffff;
+}
+
+.dropdown-item:hover{
+    color: #045b6e;
     background-color: rgba(0, 0, 0, 0);
 }
 
-#profile-card{
-    width: 400px;
-    height: 500px;
+#music-main-card{
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #f4759b;
     color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 20px;
-    text-align: center;
-
-
+    width: 50%;
+    z-index: 1;
 }
 
-#update-form{
-    display: block;
-    width: 400px;
+.navbar-brand{
     color: #ffffff;
-    border: 1px solid #ffffff;
-    display: none;
-    -webkit-transition: all 1s ease-out;
+    margin-left: 30px;
 }
 
-#composition-adding-form{
+#navbarDropdown{
     color: #ffffff;
-
+    margin-right: 30px;
 }

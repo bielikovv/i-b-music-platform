@@ -2,44 +2,43 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div id="profile-card">
-            {% if user.profile.photo %}
-            <img src="{{ user.profile.photo.url }}" id="profile-photo">
-            {% else %}
-            <img src="https://www.meme-arsenal.com/memes/fefac21eda463aa9a307c7cfdbea1bee.jpg" id="profile-empty-photo" alt="">
-            {% endif %}
-            <h3 class="card-title">{{ user.profile.nickname }}</h3>
-            <h5 class="card-title">({{ user.first_name }} {{ user.last_name }})</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ user.profile.location }}</h6>
-        </div>
-
-
-
-        <div id="redaction-card">
-            <div class="card-body">
-                <h3 class="card-title">User information:</h3>
-                <h4 class="card-title">Singer nickname: {{ user.profile.nickname }}</h4>
-                <h5 class="card-title">First name: {{ user.first_name }}</h5>
-                <h5 class="card-title">Last name: {{ user.last_name }}</h5>
-                <p class="card-text">About me: {{ user.profile.about }}</p>
-                <p class="card-text">E-mail: {{ user.email }}</p>
-                <p class="card-text">My location: {{ user.profile.location }}</p>
-                <p class="card-text">Date of birth: {{ user.profile.birth_date }}</p>
-                <button type="button" id="open-form-button" onclick="showForm()" class="btn btn-primary btn-sm">Change information</button>
+    <div id="card-of-porfile">
+        <div class="row">
+            <div id="profile-card">
+                {% if user.profile.photo %}
+                <img src="{{ user.profile.photo.url }}" id="profile-photo">
+                {% else %}
+                <img src="https://www.meme-arsenal.com/memes/fefac21eda463aa9a307c7cfdbea1bee.jpg" id="profile-empty-photo" alt="">
+                {% endif %}
             </div>
-        </div>
 
 
 
-        <div id="update-form">
-            <div class="card-body">
-                <form method="post" enctype="multipart/form-data" id="form-update-info">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary btn-sm">Change</button>
-                    <button type="submit" onclick="showDefaultPage()" class="btn btn-primary btn-sm">Back</button>
-                </form>
+            <div id="redaction-card">
+                <div class="card-body">
+                    <h3 class="card-title">User information:</h3>
+                    <h4 class="card-title">Singer nickname: {{ user.profile.nickname }}</h4>
+                    <h5 class="card-title">First name: {{ user.first_name }}</h5>
+                    <h5 class="card-title">Last name: {{ user.last_name }}</h5>
+                    <p class="card-text">About me: {{ user.profile.about }}</p>
+                    <p class="card-text">E-mail: {{ user.email }}</p>
+                    <p class="card-text">My location: {{ user.profile.location }}</p>
+                    <p class="card-text">Date of birth: {{ user.profile.birth_date }}</p>
+                    <button type="button" id="open-form-button" onclick="showForm()" class="btn btn-primary btn-sm">Change information</button>
+                </div>
+            </div>
+
+
+
+            <div id="update-form">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" id="form-update-info">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary btn-sm">Change</button>
+                        <button type="submit" onclick="showDefaultPage()" class="btn btn-primary btn-sm">Back</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -49,14 +48,16 @@
 
 
 <script>
- function showForm() {
-    document.getElementById('update-form').style.display = 'block';
-    document.getElementById('redaction-card').style.width = 500+'px';
- }
+    function showForm() {
+        document.getElementById('update-form').style.display = 'block';
+        document.getElementById('redaction-card').style.width = 500+'px';
+        var height = $(window).height();
+        $(window).scrollTop(height);
+    }
 
- function showDefaultPage() {
-    document.getElementById('update-form').style.display = 'none';
-    document.getElementById('redaction-card').style.width = 800+'px';
- }
+    function showDefaultPage() {
+        document.getElementById('update-form').style.display = 'none';
+        document.getElementById('redaction-card').style.width = 800+'px';
+    }
 </script>
 {% endblock %}
