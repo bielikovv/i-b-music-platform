@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<script>
+
+    function getUrlComposition(id_js) {
+        window.location = 'http://127.0.0.1:8000/my-releases/composition/' + id_js;
+    }
+</script>
+
 
 
 <div class="container">
@@ -9,16 +16,10 @@
             <h1>Recommendations:</h1>
             <br>
             {% for item in items %}
-            <div id="rec-composition-table">
+            <div id="rec-composition-table" onclick="getUrlComposition('{{ item.pk }}')">
                 <h5 class="card-title">{{ item.composition_title }}</h5>
                 <h6 class="card-title">{{ item.composition_singer.nickname }}</h6>
                 <audio src="{{ item.composition_file.url }}" id="audio-area" controls></audio>
-
-<!--                <form action="" method="post">-->
-<!--                    {% csrf_token %}-->
-<!--                    {{ form.as_p }}-->
-<!--                    <button type="submit" id="select-main-button" class="btn btn-primary btn-sm">Add</button>-->
-<!--                </form>-->
             </div>
             {% endfor %}
         </div>

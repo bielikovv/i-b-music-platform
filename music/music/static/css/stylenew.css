@@ -191,9 +191,24 @@ body{
 
 #rec-composition-table{
     border: 1px solid #ffffff;
-    padding: 20px;
+    padding: 15px;
+    width: 98%;
+    cursor: pointer;
+    display: inline-block;
     margin: 10px;
+    -webkit-transition: all 0.25s ease-out;
+    background-color: rgba(75, 124, 120, 15%);
+}
 
+#rec-composition-table:hover{
+    -webkit-transform: scale(1.025);
+    -ms-transform: scale(1.025);
+    transform: scale(1.025);
+    background-color: rgba(0, 0, 0, 10%);
+}
+
+#empty-form .form-control[name=composition_envelope]:not(:disabled):not([readonly]){
+    display: none;
 }
 
 #music-main-card{

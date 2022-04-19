@@ -47,20 +47,21 @@ def show_playlist(request, playlist_id):
 
 def show_user_form(request):
     if request.method == 'POST':
-        form = RedactInfoUserForm(request.POST, request.FILES, instance=request.user.profile)
+        form = RedactInfoUserForm(request.POST, request.FILES, instance=request.user.profile, initial={'first_name':request.user.first_name, 'last_name':request.user.last_name, 'email':request.user.email})
         if form.is_valid():
             form.save()
             redirect('profile')
     else:
-        form = RedactInfoUserForm(instance=request.user.profile, initial={'first_name':request.user.first_name, 'last_name':request.user.last_name, 'email':request.user.email })
+        form = RedactInfoUserForm(instance=request.user.profile, initial={'first_name':request.user.first_name, 'last_name':request.user.last_name, 'email':request.user.email})
     return render(request, 'musiccloud/user_profile.html', {'form':form})
 
 
 
 def add_album(request):
     if request.method == 'POST':
-        form = AddAlbumForm(request.POST, request.FILES)
+        form = AddAlbumForm(request.POST, request.FILES, initial={'album_user': request.user})
         if form.is_valid():
+            form.album_user = request.user
             form.save()
     else:
         form = AddAlbumForm(initial={'album_user': request.user})
@@ -81,17 +82,17 @@ def show_current_composition(request, composition_id):
 
 
 
-def add_compositions_to_album(request, album_title):
+def add_compositions_to_album(request, album_title, user_id):
     alb = Album.objects.get(album_title=album_title, album_user=request.user)
     pk = alb.pk
     added_compositions = Composition.objects.filter(composition_album=pk).order_by('-composition_date')
 
     if request.method == 'POST':
-        form = AddAlbumCompositionsForm(request.POST, request.FILES)
+        form = AddAlbumCompositionsForm(request.POST, request.FILES, initial={'composition_album': pk, 'composition_user':request.user, 'composition_singer':request.user.profile, 'composition_envelope': alb.album_envelope})
         if form.is_valid():
             form.save()
     else:
-        form = AddAlbumCompositionsForm(initial={'composition_album': pk, 'composition_user':request.user, 'composition_singer':request.user.profile})
+        form = AddAlbumCompositionsForm(initial={'composition_album': pk, 'composition_user':request.user, 'composition_singer':request.user.profile, 'composition_envelope': alb.album_envelope})
     return render(request, 'musiccloud/composition_to_album.html', {'form': form, 'compositions': added_compositions, 'album':alb})
 
 
@@ -103,7 +104,7 @@ def show_my_releases(request):
 
 
 
-def confirm_release(request, album_title):
+def confirm_release(request, album_title, user_id):
     alb = Album.objects.get(album_title=album_title, album_user=request.user)
     pk = alb.pk
     added_compositions = Composition.objects.filter(composition_album=pk).order_by('-composition_date')
@@ -123,7 +124,7 @@ def confirm_release(request, album_title):
 
 def add_composition(request):
     if request.method == 'POST':
-        form = AddCompositionForm(request.POST, request.FILES)
+        form = AddCompositionForm(request.POST, request.FILES, initial={'composition_user': request.user, 'composition_singer': request.user.profile})
         if form.is_valid():
             form.save()
             return redirect('main_page')

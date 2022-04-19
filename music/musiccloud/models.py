@@ -16,19 +16,18 @@ class Album(models.Model):
 
 
 class Playlists(models.Model):
-    playlist_user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Username', null=True)
+    playlist_user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Username', null=True)
     playlist_title = models.CharField(max_length=128, verbose_name='Title', null=True)
     playlist_envelope = models.ImageField(verbose_name='Envelope', upload_to='photo/%Y/%m/%d', null=True)
     date_playlist = models.DateTimeField(auto_now_add=True, verbose_name='Playlist creation date')
     playlist_composition = models.ManyToManyField('Composition', verbose_name='Composition', blank=True)
 
-    def __str__(self):
-        return self.playlist_title
+
 
 
 
 class Composition(models.Model):
-    composition_user = models.ForeignKey(User, verbose_name='Username', on_delete=models.PROTECT, null=True)
+    composition_user = models.ForeignKey(User, verbose_name='Username', on_delete=models.CASCADE, null=True)
     composition_envelope = models.ImageField(verbose_name='Envelope', upload_to='photo/%Y/%m/%d', blank=True, null=True)
     composition_title = models.CharField(max_length=455, verbose_name='Title', default='NoName', blank=True)
     composition_file = models.FileField(verbose_name='Composition file', upload_to='audio')
