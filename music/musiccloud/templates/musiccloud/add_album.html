@@ -16,7 +16,7 @@
 
 <div class="container">
     <div class="row">
-        <div id="music-current-card" class="music-current-card">
+        <div id="add-album-card" >
             <div class="card-body">
                 <form action="" name="my" enctype="multipart/form-data" method="post">
                     {% csrf_token %}
@@ -36,7 +36,7 @@
                         <label for="{{ form.subject.id_for_label }}"></label>
                         {{ form.album_user }}
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Create Album</button>
                     <button type="submit" onclick="changeUrl()" id="changing-url-btn" class="btn btn-primary btn-sm">Add compositions to last created album</button>
                 </form>
             </div>

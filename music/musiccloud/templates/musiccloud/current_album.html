@@ -21,7 +21,7 @@ function showSingleComposition(id_js) {
                     {% for music in compositions %}
                     <div id="album-composition-current" onclick="showSingleComposition('{{ music.pk }}')">
                         {% if music.composition_file %}
-                        <h5 class="card-title">{{ music.composition_title }}</h5>
+                        <h1 class="card-title">{{ music.composition_title }}</h1>
                         <h6 class="card-title">{{ music.composition_singer.nickname }}</h6>
                         <audio src="{{ music.composition_file.url }}" id="audio-playlist" controls></audio>
                         {% endif %}

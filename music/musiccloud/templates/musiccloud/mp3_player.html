@@ -4,13 +4,13 @@
 
 <script>
     function getAddForm() {
-        document.getElementById('music-add-card').style.display = 'block';
+        document.getElementById('playlist-add-card').style.display = 'block';
         document.getElementById('add-music-button').style.display = 'none';
 
 
     }
     function getMusic() {
-        document.getElementById('music-add-card').style.display = 'none';
+        document.getElementById('playlist-add-card').style.display = 'none';
         document.getElementById('add-music-button').style.display = 'block';
     }
 
@@ -22,30 +22,31 @@
 
 
 <div class="container">
-    <div class="row">
-        <div id="music-add-card">
-            <form enctype="multipart/form-data" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary btn-sm">Add</button>
-                <button type="button" onclick="getMusic()" class="btn btn-primary btn-sm">Hide</button>
-            </form>
-        </div>
+    <div id="my-playlist-card">
+        <div class="row">
+            <div id="playlist-add-card">
+                <form enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                    <button type="button" onclick="getMusic()" class="btn btn-primary btn-sm">Hide</button>
+                </form>
+            </div>
 
-
-        <div id="music-card" class="music-card">
-            <div class="card-body">
-                <h1 class="card-title">My playlists:</h1>
-                <button type="submit" id="add-music-button" onclick="getAddForm()" class="btn btn-primary btn-sm">Add playlist</button>
-                <br>
-                {% for item in track %}
-                <div id="playlist-card" onclick="getUrl('{{ item.pk }}')" class="playlist-card">
-                    {% if item.playlist_envelope %}
-                    <img id="envelope-playlist" src="{{ item.playlist_envelope.url }}">
-                    {% endif %}
-                    <h3 class="card-title" id="playlist-card-title">{{ item.playlist_title }}</h3>
+            <div id="music-card" class="music-card">
+                <div class="card-body">
+                    <h1 class="card-title">My playlists:</h1>
+                    <button type="submit" id="add-music-button" onclick="getAddForm()" class="btn btn-primary btn-sm">Add playlist</button>
+                    <br>
+                    {% for item in track %}
+                    <div id="playlist-card" onclick="getUrl('{{ item.pk }}')" class="playlist-card">
+                        {% if item.playlist_envelope %}
+                        <img id="envelope-playlist" src="{{ item.playlist_envelope.url }}">
+                        {% endif %}
+                        <h3 class="card-title" id="playlist-card-title">{{ item.playlist_title }}</h3>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
         </div>
     </div>

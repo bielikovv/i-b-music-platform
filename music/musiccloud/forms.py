@@ -67,8 +67,8 @@ class AddAlbumForm(forms.ModelForm):
 class AddAlbumCompositionsForm(forms.ModelForm):
     composition_title = forms.CharField(label='Title', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
     composition_file = forms.FileField(label='Song file', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm', 'multiple': True}))
-    composition_envelope = forms.FileField(label='', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm'}))
-    composition_album = forms.ModelChoiceField(label='', empty_label=None, queryset=Album.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
+    composition_envelope = forms.FileField(label='', disabled=True, widget=forms.FileInput(attrs={'class': 'form-control form-control-sm'}))
+    composition_album = forms.ModelChoiceField(label='', empty_label=None, disabled=True, queryset=Album.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
     composition_user = forms.ModelChoiceField(label='', empty_label=None, disabled=True, queryset=User.objects.all(), widget=forms.HiddenInput(attrs={'class': 'form-control form-control-sm'}))
     composition_singer = forms.ModelChoiceField(label='', empty_label=None, disabled=True, queryset=Profile.objects.all(), widget=forms.HiddenInput(attrs={'class': 'form-control form-control-sm'}))
 

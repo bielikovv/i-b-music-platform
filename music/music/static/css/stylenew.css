@@ -3,16 +3,216 @@ html, body{
     height: 100%;
     width: 100%;
     background-attachment: fixed;
+
 }
 
 
 body{
-    background-image: url('https://srv2.imgonline.com.ua/result_img/imgonline-com-ua-Blur-UnNwgioAqW.jpg');
+    background-image: url('https://i.ibb.co/mBBwZR8/imgonline-com-ua-Blur-o-Mtu1i-Htu9-F3a-Mu.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
     height: 100%;
 
 
+}
+
+#add-release-card{
+    width: 100%;
+    background-color: #f4759b;
+    opacity: 95%;
+    padding: 40px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    color: #ffffff;
+}
+
+#album-add-card{
+    object-fit: cover;
+    width: 75%;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    margin-top: 20px;
+    transition: 0.15s ease-out;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+#album-add-card:hover{
+    -webkit-transform: scale(1.05);
+}
+
+.album-add-card{
+    width: 50%;
+    text-align: center;
+}
+
+.adding-card-music{
+    width: 50%;
+    text-align: center;
+
+}
+
+#adding-card-music:hover{
+    -webkit-transform: scale(1.05);
+}
+
+#adding-card-music{
+    object-fit: cover;
+    width: 75%;
+    height: 380px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    margin-top: 20px;
+    transition: 0.15s ease-out;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+#add-album-card{
+    width: 100%;
+    background-color: #f4759b;
+    opacity: 95%;
+    padding: 40px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    color: #ffffff;
+}
+
+#comp-to-album{
+    width: 100%;
+    background-color: #f4759b;
+    opacity: 95%;
+    padding: 40px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    color: #ffffff;
+}
+#alb{
+    width: 400px;
+    background-color: #f4759b;
+    opacity: 95%;
+    padding: 20px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-right: 30px;
+}
+
+#empty-form{
+    width: 760px;
+}
+
+.btn-primary{
+    background-color: #ffffff;
+    color: #f4759b;
+    border-width: 0px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+}
+
+.btn-primary:hover{
+    background-color: #f4759b;
+    color: #ffffff;
+    border-width: 0px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+}
+
+#comp{
+    width: 760px;
+}
+
+select#id_composition_album:disabled{
+    display: none;
+}
+.form-control[type=file]:disabled{
+    display: none;
+}
+
+#open-form-button:focus{
+    background-color: #ffffff;
+    color: #f4759b;
+    border-width: 0px;
+    outline: none;
+}
+
+#music-to-album-card{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    color: #ffffff;
+    height: 447px;
+    padding: 20px;
+
+}
+
+#album-envelope-example{
+    margin-bottom: 15px;
+    width: 350px;
+    object-fit: cover;
+    height: 350px;
+    text-align: center;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+
+}
+
+#post-card{
+    width: 100%;
+    background-color: #f4759b;
+    opacity: 95%;
+    padding: 40px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    color: #ffffff;
+}
+
+#music-to-album-card{
+    width: 800px;
+    padding-top: 40px;
+}
+
+#composition-card{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 20px;
+    margin-bottom: 10px;
+    -webkit-transition: 0.15s ease-out;
+    background-color: #ffffff;
+    color: #f4759b;
+    cursor: pointer;
+}
+#composition-card:hover{
+    -webkit-transform: scale(1.025);
+}
+
+#rec-composition-table{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 15px;
+    margin-bottom: 10px;
+    -webkit-transition: 0.15s ease-out;
+    background-color: #ffffff;
+    color: #f4759b;
+    cursor: pointer;
+
+}
+
+#rec-composition-table:hover{
+    -webkit-transform: scale(1.025);
+}
+
+#comp-to-alb-form{
+    width: 50%;
+}
+
+#audio-area{
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 25px;
 }
 
 #card-of-porfile{
@@ -49,6 +249,11 @@ body{
 
 .navbar{
     margin-bottom: 30px;
+    background-color: #ffffff;
+    opacity: 85%;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+
 }
 
 .navbar-nav .dropdown-menu{
@@ -57,15 +262,77 @@ body{
     border-width: 0px;
     margin-left: 40px;
     text-align: right;
+    position: fixed;
+    z-index: 25;
+}
+
+#single-current-composition-envelope{
+    margin-bottom: 15px;
+    width: 90%;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+}
+
+#composition-current{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #f4759b;
+    color: #ffffff;
+    opacity: 95%;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
 }
 
 .dropdown-item{
     color: #ffffff;
+    -webkit-transition: 0.2s ease-out;
+    z-index: 15;
+    position: relative;
+}
+#playlist-composition-current{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    color: #f4759b;
+    text-align: left;
+    -webkit-transition: 0.15s ease-out;
+    cursor: pointer;
+}
+#playlist-composition-current:hover{
+    -webkit-transform: scale(1.025);
+}
+
+#album-composition-current{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    color: #f4759b;
+    text-align: left;
+    -webkit-transition: 0.15s ease-out;
+    cursor: pointer;
+}
+#album-composition-current:hover{
+    -webkit-transform: scale(1.025);
 }
 
 .dropdown-item:hover{
-    color: #045b6e;
+    color: #ffffff;
     background-color: rgba(0, 0, 0, 0);
+    -webkit-transform: scale(1.25);
+
+}
+
+.navbar-nav .dropdown-menu{
+    margin-top: 10px;
+    position: relative;
+    z-index: 999;
 }
 
 #music-main-card{
@@ -78,14 +345,120 @@ body{
     color: #ffffff;
     width: 50%;
     z-index: 1;
+    opacity: 90%;
+}
+
+#playlist-add-card{
+    display: none;
+
+}
+
+select#id_playlist_user:disabled{
+    display: none;
+}
+
+#playlist-current-card{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #f4759b;
+    color: #ffffff;
+    opacity: 95%;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+#album-card{
+    width: 350px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    text-align: center;
+    padding: 20px;
+    margin: 25px;
+    -webkit-transition: 0.15s ease-out;
+    cursor: pointer;
+    display: inline-block;
+}
+#album-card:hover{
+    -webkit-transform: scale(1.05);
+}
+
+#my-releases-card{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #f4759b;
+    color: #ffffff;
+    opacity: 95%;
+}
+
+#envelope-current-playlist{
+    margin-bottom: 15px;
+    width: 90%;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+}
+
+#playlist-card{
+    width: 350px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    text-align: center;
+    padding: 20px;
+    margin: 25px;
+    -webkit-transition: 0.15s ease-out;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#playlist-card:hover{
+    -webkit-transform: scale(1.05);
+
+}
+
+#envelope-playlist{
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+}
+
+#envelope-album{
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+}
+
+#my-playlist-card{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #f4759b;
+    color: #ffffff;
+    opacity: 95%;
 }
 
 .navbar-brand{
-    color: #ffffff;
+    color: #f4759b;
     margin-left: 30px;
+    -webkit-transition: 0.2s ease-out;
+}
+
+.navbar-brand:hover{
+    -webkit-transform: scale(1.25);
+    color: #f4759b;
+
 }
 
 #navbarDropdown{
-    color: #ffffff;
+    color: #f4759b;
     margin-right: 30px;
+    -webkit-transition: 0.2s ease-out;
+    z-index: 999;
+    position: relative;
+}
+#navbarDropdown:hover{
+    -webkit-transform: scale(1.1);
+    color: #f4759b;
 }
