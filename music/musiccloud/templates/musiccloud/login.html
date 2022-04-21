@@ -3,11 +3,13 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <form method="post" id="login-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" id="log-button" class="btn btn-dark">Login</button>
-        </form>
+        <div id="login-card">
+            <form method="post" id="login-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" id="log-button" class="btn btn-primary btn-sm">Login</button>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}

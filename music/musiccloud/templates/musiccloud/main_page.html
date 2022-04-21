@@ -4,22 +4,118 @@
 <script>
 
     function getUrlComposition(id_js) {
-        window.location = 'http://127.0.0.1:8000/my-releases/composition/' + id_js;
+        // let target = document.getElementById('add-music-to-playlist-btn');
+        // if(target.onclick){
+        //     stop()
+        // }
+        // else{
+
+        window.location = 'http://127.0.0.1:8000/composition/' + id_js;
+        // }
+    }
+
+    function getUrlAlbum(id_js) {
+        window.location = 'http://127.0.0.1:8000/album/' + id_js;
+    }
+
+    function getUrlUserNickname(id_js) {
+        window.location = 'http://127.0.0.1:8000/singer/' + id_js;
+    }
+
+    function showChoosePlaylist() {
+        document.getElementById('choose-playlists-card').style.display = 'inline-block';
     }
 </script>
 
 
 
+<div id="choose-playlists-card">
+    <h1>Choose playlist</h1>
+    {% for item in playlist %}
+    <div id="choose-playlist-table" onclick="getUrl('{{ item.pk }}')">
+        {% if item.playlist_envelope %}
+        <img id="chose-envelope-playlist" src="{{ item.playlist_envelope.url }}">
+        {% endif %}
+        <h6 class="card-title">{{ item.playlist_title }}</h6>
+    </div>
+    {% endfor %}
+</div>
 <div class="container">
     <div class="row">
+        <div id="rec-albums">
+            <h3>Albums:</h3>
+            <br>
+            {% for item in albums %}
+            <div id="rec-album-table" onclick="getUrlAlbum('{{ item.pk }}')">
+                <img src="{{ item.album_envelope.url }}" id="album-envelope-main-page" alt="">
+                <h5 class="card-title">{{ item.album_title }}</h5>
+            </div>
+            {% endfor %}
+        </div>
+
         <div id="music-main-card">
             <h1>Recommendations:</h1>
             <br>
-            {% for item in items %}
+
+            <form class="d-flex" action="{% url 'main_page' %}">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-primary btn-sm" type="submit">Search</button>
+            </form>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% for p in page_obj.paginator.page_range %}
+                    {% if page_obj.number == p %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+                    </li>
+                    {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ p }}">{{ p }}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+
+            {% for item in page_obj.object_list %}
+
             <div id="rec-composition-table" onclick="getUrlComposition('{{ item.pk }}')">
                 <h5 class="card-title">{{ item.composition_title }}</h5>
                 <h6 class="card-title">{{ item.composition_singer.nickname }}</h6>
-                <audio src="{{ item.composition_file.url }}" id="audio-area" controls></audio>
+                <audio src="{{ item.composition_file.url }}" id="audio-area" controls></audio><div id="add-music-to-playlist-btn" onclick="showChoosePlaylist()"></div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div id="rec-singers">
+            <h3>Singers:</h3>
+            <br>
+            {% for item in singers %}
+            <div id="rec-singer-table-user" onclick="getUrlUserNickname('{{ item.pk }}')">
+                {% if item.profile.photo %}
+                <img src="{{ item.profile.photo.url }}" id="singer-photo-main-page" alt="">
+                {% else %}
+                <img src="" alt="">
+                {% endif %}
+                <h5 class="card-title">{{ item.profile.nickname }}</h5>
             </div>
             {% endfor %}
         </div>

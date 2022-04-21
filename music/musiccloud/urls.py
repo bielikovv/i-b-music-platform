@@ -15,8 +15,10 @@ urlpatterns = [
     path('add-release/album/albcompadd/<str:album_title>/<int:user_id>/', add_compositions_to_album, name="albcompadd"),
     path('add-release/album/albcompadd/<str:album_title>/<int:user_id>/confirm-release/', confirm_release, name="confirm_release"),
     path('my-releases/', show_my_releases, name="my_releases"),
-    path('my-releases/album/<int:album_id>/', show_current_album, name="current-album"),
-    path('my-releases/composition/<int:composition_id>/', show_current_composition, name="current-composition"),
+    path('album/<int:album_id>/', show_current_album, name="current-album"),
+    path('composition/<int:composition_id>/', show_current_composition, name="current-composition"),
+    path('singer/<int:singer_id>/', show_singer_profile, name="singer-profile"),
+    path('add/<int:composition_id>/<int:playlist_id>/', show_singer_profile, name="add-to-playlist"),
 
 
 ]

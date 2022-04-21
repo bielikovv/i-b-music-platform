@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div id="card-of-singer">
+        <div class="row">
+            <div id="first-part-singer-info">
+                <h3 class="card-title">User information:</h3>
+                <h4 class="card-title">Singer nickname: {{ singer_info.profile.nickname }}</h4>
+                <h5 class="card-title">First name: {{ singer_info.first_name }}</h5>
+                <h5 class="card-title">Last name: {{ singer_info.last_name }}</h5>
+            </div>
+            <div id="profile-card">
+                {% if singer_info.profile.photo %}
+                <img src="{{ singer_info.profile.photo.url }}" id="singer-photo">
+                {% else %}
+                <img src="https://www.meme-arsenal.com/memes/fefac21eda463aa9a307c7cfdbea1bee.jpg" id="profile-empty-photo" alt="">
+                {% endif %}
+            </div>
+
+
+
+            <div id="second-part-singer-info">
+                <p class="card-text">About: {{ singer_info.profile.about }}</p>
+                <p class="card-text">E-mail: {{ singer_info.email }}</p>
+                <p class="card-text">Location: {{ singer_info.profile.location }}</p>
+                <p class="card-text">Date of birth: {{ singer_info.profile.birth_date }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="card-of-releases-singer">
+        <div class="row">
+            <h1 class="card-title">Releases:</h1>
+            <br>
+            <div id="singer-profile-releases-card">
+                <h3>Albums:</h3>
+                {% for item in singer_albums %}
+                <div id="album-card-singer-profile" onclick="getUrlAlbum('{{ item.pk }}')">
+                    {% if item.album_envelope %}
+                    <img id="envelope-album-singer-profile" src="{{ item.album_envelope.url }}">
+                    {% endif %}
+                    <h3 class="card-title" id="album-card-title">{{ item.album_title }}</h3>
+                    <h6 class="card-title" >{{ item.date_album }}</h6>
+                </div>
+                {% endfor %}
+                <br>
+                <br>
+                <h3>Singles:</h3>
+                <br>
+                {% for item in singer_composition %}
+                <div id="composition-card-singer-profile" onclick="getUrlComposition('{{ item.pk }}')" class="composition-card">
+                    <h3 class="card-title" id="composition-card-title">{{ item.composition_title }}</h3>
+                    <h6 class="card-title" >{{ item.composition_date }}</h6>
+                    <audio id="my-single-form-audio" src="{{ item.composition_file.url }}" controls></audio>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    function getUrlComposition(id_js) {
+        window.location = 'http://127.0.0.1:8000/composition/' + id_js;
+    }
+
+    function getUrlAlbum(id_js) {
+        window.location = 'http://127.0.0.1:8000/album/' + id_js;
+    }
+</script>
+{% endblock %}

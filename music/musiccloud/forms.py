@@ -84,18 +84,20 @@ class AddCompositionForm(forms.ModelForm):
     composition_envelope = forms.FileField(label='Envelope', widget=forms.ClearableFileInput(attrs={'class': 'form-control form-control-sm'}))
     composition_file = forms.FileField(label='Song file', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm'}))
     composition_singer = forms.ModelChoiceField(label='', empty_label=None, disabled=True, queryset=Profile.objects.all(), widget=forms.HiddenInput(attrs={'class': 'form-control form-control-sm'}))
-    composition_is_published = forms.BooleanField(label='Release', initial=True, required=False)
+    composition_is_published = forms.BooleanField(label='', initial=True, disabled=True, required=False)
 
     class Meta:
         model = Composition
         fields = ['composition_file', 'composition_title', 'composition_envelope', 'composition_singer', 'composition_user', 'composition_is_published']
 
-# class AddCompToPlaylistForm(forms.ModelForm):
-#     playlist_composition = forms.ModelChoiceField(label='Плейлист:', empty_label=None, queryset=Playlists.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
-#
-#     class Meta:
-#         model = Composition
-#         fields = ['playlist_composition', ]
+
+
+class AddCompToPlaylistForm(forms.ModelForm):
+    playlist_composition = forms.ModelChoiceField(label='Плейлист:', empty_label=None, queryset=Composition.objects.all(), widget=forms.Select(attrs={'class': 'form-control form-control-sm'}))
+
+    class Meta:
+        model = Playlists
+        fields = ['playlist_composition', ]
 
 
 

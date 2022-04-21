@@ -108,9 +108,32 @@ body{
     background-color: #ffffff;
     color: #f4759b;
     border-width: 0px;
+    border-color: #f4759b;
     box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
     -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    transition: none;
+    outline: 0 !important;
+
 }
+
+.d-flex{
+    margin-bottom: 10px;
+}
+#form-update-info{
+    color: #ffffff;
+}
+
+
+.btn-primary:focus .btn-primary:active{
+    box-shadow: none;
+    outline: none !important;
+    transition: none;
+    border-width: 0px;
+    background-color: #ffffff;
+    color: #f4759b;
+    position: absolute;
+}
+
 
 .btn-primary:hover{
     background-color: #f4759b;
@@ -118,6 +141,7 @@ body{
     border-width: 0px;
     box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
     -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+
 }
 
 #comp{
@@ -183,6 +207,24 @@ select#id_composition_album:disabled{
     color: #f4759b;
     cursor: pointer;
 }
+#composition-card-singer-profile{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 20px;
+    margin-bottom: 10px;
+    -webkit-transition: 0.15s ease-out;
+    background-color: #ffffff;
+    color: #f4759b;
+    cursor: pointer;
+    width: 1205px;
+}
+
+
+
+#composition-card-singer-profile:hover{
+    -webkit-transform: scale(1.025);
+}
+
 #composition-card:hover{
     -webkit-transform: scale(1.025);
 }
@@ -210,9 +252,65 @@ select#id_composition_album:disabled{
 #audio-area{
     box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
     -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
-    width: 100%;
+    width: 85%;
     margin-top: 10px;
     border-radius: 25px;
+}
+#add-music-to-playlist-btn{
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    background-color: #f4759b;
+    display: inline-block;
+    margin-left: 25px;
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
+    -webkit-transition: 0.2s ease-out;
+    position: relative;
+}
+#add-music-to-playlist-btn:hover{
+    -webkit-transform: scale(1.05);
+}
+#choose-playlist-table{
+    width: 200px;
+    height: 225px;
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
+    display: inline-block;
+    color: #f4759b;
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+    -webkit-transition: 0.2s ease-out;
+    cursor: pointer;
+
+}
+#choose-playlist-table:hover{
+    -webkit-transform: scale(1.05);
+}
+
+#chose-envelope-playlist{
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+}
+
+.dropdown-menu.show{
+    position: relative;
+    z-index: 999;
+}
+
+#choose-playlists-card{
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
+    z-index: 50;
+    position: fixed;
+    text-align: center;
+    display: none;
+    color: #f4759b;
+
 }
 
 #card-of-porfile{
@@ -370,6 +468,22 @@ select#id_playlist_user:disabled{
     text-align: center;
 }
 
+#album-card-singer-profile{
+    width: 350px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    text-align: center;
+    padding: 20px;
+    margin: 25px;
+    -webkit-transition: 0.15s ease-out;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#album-card-singer-profile:hover{
+    -webkit-transform: scale(1.05);
+}
+
 #album-card{
     width: 350px;
     box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
@@ -392,6 +506,9 @@ select#id_playlist_user:disabled{
     background-color: #f4759b;
     color: #ffffff;
     opacity: 95%;
+}
+#singer-profile-releases-card{
+    margin-left: 20px;
 }
 
 #envelope-current-playlist{
@@ -430,6 +547,12 @@ select#id_playlist_user:disabled{
     height: 300px;
 }
 
+#envelope-album-singer-profile{
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+}
+
 #my-playlist-card{
     box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
     -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
@@ -461,4 +584,240 @@ select#id_playlist_user:disabled{
 #navbarDropdown:hover{
     -webkit-transform: scale(1.1);
     color: #f4759b;
+}
+
+input[type="checkbox" i]:disabled{
+    display: none;
+}
+
+#reg{
+    color: #f4759b;
+    -webkit-transition: 0.15s ease-out;
+}
+#reg:hover{
+    -webkit-transform: scale(1.05);
+}
+
+#log{
+    color: #f4759b;
+    -webkit-transition: 0.15s ease-out;
+}
+
+#log:hover{
+    -webkit-transform: scale(1.05);
+}
+
+#register-card{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #f4759b;
+    color: #ffffff;
+    opacity: 95%;
+}
+
+#rec-albums{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #f4759b;
+    color: #ffffff;
+    opacity: 95%;
+    width: 300px;
+    text-align: center;
+}
+
+#rec-singers{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #f4759b;
+    color: #ffffff;
+    opacity: 95%;
+    width: 300px;
+    text-align: center;
+}
+
+#first-part-singer-info{
+    width: 300px;
+    color: #ffffff;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+}
+
+#second-part-singer-info{
+    margin-left: 100px;
+    width: 280px;
+    color: #ffffff;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#card-of-singer{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #f4759b;
+    color: #ffffff;
+    opacity: 95%;
+
+}
+
+#singer-photo{
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+    text-align: center;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#profile-card{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#card-of-releases-singer{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #ffffff;
+    color: #f4759b;
+    opacity: 95%;
+}
+
+#singer-photo-main-page{
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+
+}
+
+
+#rec-singer-table{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 15px;
+    margin-bottom: 15px;
+    -webkit-transition: 0.2s ease-out;
+    cursor: pointer;
+}
+#rec-singer-table:hover{
+    -webkit-transform: scale(1.05);
+}
+
+
+#rec-album-table{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 15px;
+    margin-bottom: 15px;
+    -webkit-transition: 0.2s ease-out;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #f4759b;
+}
+
+#rec-album-table:hover{
+    -webkit-transform: scale(1.05);
+}
+
+#album-envelope-main-page{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    text-align: center;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    margin-bottom: 10px;
+
+}
+
+.form-control{
+    border-radius: 0px;
+    color: #f4759b;
+    box-shadow: none;
+    outline: 0 !important;
+    transition: none;
+    border-width: 0px;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+}
+
+.form-control:focus{
+    box-shadow: none;
+    outline: 0 !important;
+    transition: none;
+    border-width: 0px;
+}
+
+.form-control:active{
+    box-shadow: none;
+    outline: 0 !important;
+    transition: none;
+    border-width: 0px;
+}
+
+.page-item{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+}
+
+.page-item:first-child .page-link{
+    border-radius: 0px;
+}
+.page-item:last-child .page-link{
+    border-radius: 0px;
+}
+
+.page-link:hover{
+    color: #ffffff;
+    background-color: #f4759b;
+}
+
+.page-link{
+    color: #f4759b;
+}
+
+.page-item.active .page-link{
+    background-color: #f4759b;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+#rec-singer-table-user{
+    background-color: #ffffff;
+    color: #f4759b;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 15px;
+    margin-bottom: 15px;
+    -webkit-transition: 0.2s ease-out;
+    cursor: pointer;
+}
+#rec-singer-table-user:hover{
+    -webkit-transform: scale(1.05);
+}
+
+#login-card{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #f4759b;
+    color: #ffffff;
+    opacity: 95%;
+}
+
+#composition-adding-form{
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    padding: 25px;
+    background-color: #f4759b;
+    color: #ffffff;
+    opacity: 95%;
 }

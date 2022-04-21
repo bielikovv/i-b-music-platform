@@ -1,5 +1,6 @@
 from django.contrib.auth import logout, login
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.forms import formset_factory
 from django.shortcuts import render, redirect
 from .models import *
@@ -9,19 +10,35 @@ from django.views.generic.edit import FormView
 
 
 def show_main_page(request):
-    items = Composition.objects.filter(composition_is_published=True).order_by('-composition_date')
+    search_query = request.GET.get('search', '')
+    if search_query:
+        items = Composition.objects.filter(composition_is_published=True, composition_title__icontains=search_query).order_by('-composition_date')
+    else:
+        items = Composition.objects.filter(composition_is_published=True).order_by('-composition_date')
+
+    albums = Album.objects.all()
+    singers = User.objects.all()
+    paginator = Paginator(items, 5)
+    page_num = request.GET.get('page', 1)
+    page_objects = paginator.get_page(page_num)
     if request.user.is_authenticated:
         playlist = Playlists.objects.filter(playlist_user=request.user)
-        return render(request, 'musiccloud/main_page.html', {'items': items, 'playlist': playlist})
+        return render(request, 'musiccloud/main_page.html', {'items': items, 'playlist': playlist, 'albums':albums, 'singers':singers, 'page_obj':page_objects})
+    return render(request, 'musiccloud/main_page.html', {'items': items, 'albums':albums, 'singers':singers, 'page_obj':page_objects})
 
-    # if request.method == 'POST':
-    #     form = AddCompToPlaylistForm(request.POST, playlist_user=request.user)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('main_page')
-    # else:
-    #     form = AddCompToPlaylistForm(playlist_user=request.user)
-    return render(request, 'musiccloud/main_page.html', {'items': items, })
+
+
+def add_to_playlist(request, composition_id, playlist_id):
+    playlist = Playlists.objects.get(pk=playlist_id)
+    return render(request, 'musiccloud/composition_to_playlist.html')
+
+
+
+def show_singer_profile(request, singer_id):
+    singer_info = User.objects.get(pk=singer_id)
+    singer_albums = Album.objects.filter(album_user=singer_id)
+    singer_compositions = Composition.objects.filter(composition_user=singer_id, composition_album=None)
+    return render(request, 'musiccloud/singer_profile.html', {'singer_info':singer_info, 'singer_albums': singer_albums, 'singer_composition': singer_compositions})
 
 
 
@@ -88,11 +105,11 @@ def add_compositions_to_album(request, album_title, user_id):
     added_compositions = Composition.objects.filter(composition_album=pk).order_by('-composition_date')
 
     if request.method == 'POST':
-        form = AddAlbumCompositionsForm(request.POST, request.FILES, initial={'composition_album': pk, 'composition_user':request.user, 'composition_singer':request.user.profile, 'composition_envelope': alb.album_envelope})
+        form = AddAlbumCompositionsForm(request.POST, request.FILES, initial={'composition_album': pk, 'composition_user':request.user, 'composition_singer':request.user.profile, 'composition_envelope': alb.album_envelope, 'composition_is_published': True})
         if form.is_valid():
             form.save()
     else:
-        form = AddAlbumCompositionsForm(initial={'composition_album': pk, 'composition_user':request.user, 'composition_singer':request.user.profile, 'composition_envelope': alb.album_envelope})
+        form = AddAlbumCompositionsForm(initial={'composition_album': pk, 'composition_user':request.user, 'composition_singer':request.user.profile, 'composition_envelope': alb.album_envelope, 'composition_is_published':True})
     return render(request, 'musiccloud/composition_to_album.html', {'form': form, 'compositions': added_compositions, 'album':alb})
 
 
