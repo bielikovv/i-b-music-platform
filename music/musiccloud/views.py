@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.forms import formset_factory
 from django.shortcuts import render, redirect
+from django.urls import reverse
+
 from .models import *
 from .forms import *
 from django.db.models import Q
@@ -30,7 +32,12 @@ def show_main_page(request):
 
 def add_to_playlist(request, composition_id, playlist_id):
     playlist = Playlists.objects.get(pk=playlist_id)
-    return render(request, 'musiccloud/composition_to_playlist.html')
+    composition = Composition.objects.get(pk=composition_id)
+    if request.method == 'POST':
+        playlist_cur = playlist.playlist_composition
+        playlist_cur.add(composition)
+        return redirect(reverse(show_playlist, kwargs={'playlist_id':playlist_id}))
+    return render(request, 'musiccloud/composition_to_playlist.html', {'playlist': playlist})
 
 
 

@@ -24,6 +24,8 @@ body{
     box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
     -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
     color: #ffffff;
+    z-index: 10;
+    position: relative;
 }
 
 #album-add-card{
@@ -238,6 +240,9 @@ select#id_composition_album:disabled{
     background-color: #ffffff;
     color: #f4759b;
     cursor: pointer;
+    width: 96%;
+    height: 160px;
+    display: inline-block;
 
 }
 
@@ -252,21 +257,36 @@ select#id_composition_album:disabled{
 #audio-area{
     box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
     -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
-    width: 85%;
+    width: 100%;
     margin-top: 10px;
     border-radius: 25px;
 }
+
+.navbar-nav{
+    z-index: 10;
+    position: relative;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link{
+    z-index: 10;
+    position: relative;
+}
+.navbar-nav .dropdown-menu{
+    position: relative;
+}
+
+
 #add-music-to-playlist-btn{
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    background-color: #f4759b;
+    border-radius: 0px 10px 10px 0px;
+    width: 20px;
+    position: relative;
+    height: 120px;
+    background-color: #ffffff;
     display: inline-block;
-    margin-left: 25px;
     box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
     -webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.54);
     -webkit-transition: 0.2s ease-out;
-    position: relative;
+    cursor: pointer;
 }
 #add-music-to-playlist-btn:hover{
     -webkit-transform: scale(1.05);
@@ -289,16 +309,13 @@ select#id_composition_album:disabled{
     -webkit-transform: scale(1.05);
 }
 
+
 #chose-envelope-playlist{
     width: 180px;
     height: 180px;
     object-fit: cover;
 }
 
-.dropdown-menu.show{
-    position: relative;
-    z-index: 999;
-}
 
 #choose-playlists-card{
     width: 100%;
@@ -354,14 +371,15 @@ select#id_composition_album:disabled{
 
 }
 
-.navbar-nav .dropdown-menu{
-    background: rgba(0, 0, 0, 0);
+.dropdown-menu{
+    background: rgba(255, 255, 255, 0.8);
+    color: #f4759b;
     border-radius: 0px;
     border-width: 0px;
     margin-left: 40px;
     text-align: right;
     position: fixed;
-    z-index: 25;
+    z-index: 100;
 }
 
 #single-current-composition-envelope{
@@ -385,7 +403,7 @@ select#id_composition_album:disabled{
 }
 
 .dropdown-item{
-    color: #ffffff;
+    color: #f4759b;
     -webkit-transition: 0.2s ease-out;
     z-index: 15;
     position: relative;
@@ -421,16 +439,16 @@ select#id_composition_album:disabled{
 }
 
 .dropdown-item:hover{
-    color: #ffffff;
-    background-color: rgba(0, 0, 0, 0);
-    -webkit-transform: scale(1.25);
-
+    -webkit-transform: scale(1.15);
+    color: #f4759b;
+    background-color: rgba(0,0,0,0);
 }
 
-.navbar-nav .dropdown-menu{
-    margin-top: 10px;
-    position: relative;
+
+.dropdown-menu{
     z-index: 999;
+    position: relative;
+    background-color: #ffffff;
 }
 
 #music-main-card{
@@ -661,6 +679,8 @@ input[type="checkbox" i]:disabled{
     background-color: #f4759b;
     color: #ffffff;
     opacity: 95%;
+    height: 550px;
+
 
 }
 
@@ -673,11 +693,9 @@ input[type="checkbox" i]:disabled{
     -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
     margin-top: auto;
     margin-bottom: auto;
+    margin-left: 25px;
 }
-#profile-card{
-    margin-top: auto;
-    margin-bottom: auto;
-}
+
 #card-of-releases-singer{
     box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
     -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);

@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <div id="card-of-releases-singer">
+    <div id="card-of-releases-singer" onscroll="showRel()">
         <div class="row">
             <h1 class="card-title">Releases:</h1>
             <br>
@@ -64,12 +64,23 @@
 
 
 <script>
+    $(function () {
+        $('#singer-photo').hide().slideDown(1000);
+        let w = $('#card-of-singer').style.width;
+        if (w == 550){
+            $('#first-part-singer-info').hide().slideDown(1000);
+            $('#second-part-singer-info').hide().slideDown(1000);
+        };
+
+    });
+
+
     function getUrlComposition(id_js) {
         window.location = 'http://127.0.0.1:8000/composition/' + id_js;
-    }
+    };
 
     function getUrlAlbum(id_js) {
         window.location = 'http://127.0.0.1:8000/album/' + id_js;
-    }
+    };
 </script>
 {% endblock %}

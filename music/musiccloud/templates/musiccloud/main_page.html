@@ -4,15 +4,8 @@
 <script>
 
     function getUrlComposition(id_js) {
-        // let target = document.getElementById('add-music-to-playlist-btn');
-        // if(target.onclick){
-        //     stop()
-        // }
-        // else{
-
         window.location = 'http://127.0.0.1:8000/composition/' + id_js;
-        // }
-    }
+    };
 
     function getUrlAlbum(id_js) {
         window.location = 'http://127.0.0.1:8000/album/' + id_js;
@@ -20,11 +13,20 @@
 
     function getUrlUserNickname(id_js) {
         window.location = 'http://127.0.0.1:8000/singer/' + id_js;
-    }
+    };
 
-    function showChoosePlaylist() {
+    function showChoosePlaylist(composition_id) {
         document.getElementById('choose-playlists-card').style.display = 'inline-block';
-    }
+        window.composition_id_global = composition_id;
+
+    };
+
+    function getUrl(playlist_id) {
+        let comp = window.composition_id_global;
+        window.location = 'http://127.0.0.1:8000/add/' + comp + '/' + playlist_id;
+    };
+
+
 </script>
 
 
@@ -100,8 +102,10 @@
             <div id="rec-composition-table" onclick="getUrlComposition('{{ item.pk }}')">
                 <h5 class="card-title">{{ item.composition_title }}</h5>
                 <h6 class="card-title">{{ item.composition_singer.nickname }}</h6>
-                <audio src="{{ item.composition_file.url }}" id="audio-area" controls></audio><div id="add-music-to-playlist-btn" onclick="showChoosePlaylist()"></div>
+                <audio src="{{ item.composition_file.url }}" id="audio-area" controls></audio>
             </div>
+
+            <div id="add-music-to-playlist-btn" onclick="showChoosePlaylist('{{ item.pk }}')"></div>
             {% endfor %}
         </div>
 
