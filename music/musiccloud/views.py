@@ -71,6 +71,7 @@ def show_playlist(request, playlist_id):
 
 def show_user_form(request):
     if request.method == 'POST':
+        #BAD CODE BECAUSE OF INSTANCE
         form = RedactInfoUserForm(request.POST, request.FILES, instance=request.user.profile, initial={'first_name':request.user.first_name, 'last_name':request.user.last_name, 'email':request.user.email})
         if form.is_valid():
             form.save()

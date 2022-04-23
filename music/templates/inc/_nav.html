@@ -9,7 +9,7 @@
         {% if user.is_authenticated %}
         <div class="navbar-nav" id="logout-bar" >
             <div class="nav-item dropdown" >
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" onclick="showDropDown()" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     Welcome, {{ user.first_name }} {{ user.last_name }}
                 </a>
                 <div class="dropdown-menu" id="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -33,10 +33,11 @@
 
 <script>
 
-    function showDropDown() {
+    document.getElementById('navbarDropdown').onclick = function () {
         document.getElementById('dropdown-menu').style.display = 'block';
 
-    };
+    }
+
 
 </script>
 
