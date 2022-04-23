@@ -27,18 +27,26 @@ class LoginForm(AuthenticationForm):
 
 
 class RedactInfoUserForm(forms.ModelForm):
-    photo = forms.ImageField(label='Photo', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm'}))
     first_name = forms.CharField(label='First name', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
     last_name = forms.CharField(label='Last name', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
+    email = forms.EmailField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-control form-control-sm'}))
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+
+
+class RedactInfoProfileForm(forms.ModelForm):
+    photo = forms.ImageField(label='Photo', widget=forms.FileInput(attrs={'class': 'form-control form-control-sm'}))
     nickname = forms.CharField(label='Singer nickname', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
     about = forms.CharField(label='About me', widget=forms.Textarea(attrs={'class': 'form-control form-control-sm'}))
-    email = forms.EmailField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-control form-control-sm'}))
     location = forms.CharField(label='My location', widget=forms.TextInput(attrs={'class': 'form-control form-control-sm'}))
     birth_date = forms.DateField(label='Date of birth', widget=forms.DateInput(attrs={'class': 'form-control form-control-sm'}))
 
     class Meta:
-        model = User
-        fields = ['photo', 'first_name', 'last_name', 'nickname', 'email', 'about', 'location', 'birth_date']
+        model = Profile
+        fields = ['photo', 'nickname', 'about', 'location', 'birth_date']
 
 
 

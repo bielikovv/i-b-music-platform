@@ -12,8 +12,6 @@
                 {% endif %}
             </div>
 
-
-
             <div id="redaction-card">
                 <div class="card-body">
                     <h3 class="card-title">User information:</h3>
@@ -28,13 +26,12 @@
                 </div>
             </div>
 
-
-
             <div id="update-form">
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data" id="form-update-info">
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        {{ form1.as_p }}
+                        {{ form2.as_p }}
                         <button type="submit" class="btn btn-primary btn-sm">Change</button>
                         <button type="submit" onclick="showDefaultPage()" class="btn btn-primary btn-sm">Back</button>
                     </form>
@@ -43,9 +40,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 <script>
     function showForm() {

@@ -2,30 +2,25 @@
 
 {% block content %}
 
-<script>
-
-</script>
-
-
 <div class="container">
     <div class="row">
-            <div class="card-body">
-                <div id="playlist-current-card" class="playlist-card">
-                    <h1 class="card-title">{{ playlist.playlist_title }}</h1>
-                    {% if playlist.playlist_envelope %}
-                    <img id="envelope-current-playlist" src="{{ playlist.playlist_envelope.url }}">
+        <div class="card-body">
+            <div id="playlist-current-card" class="playlist-card">
+                <h1 class="card-title">{{ playlist.playlist_title }}</h1>
+                {% if playlist.playlist_envelope %}
+                <img id="envelope-current-playlist" src="{{ playlist.playlist_envelope.url }}">
+                {% endif %}
+                {% for music in playlist.playlist_composition.all %}
+                <div id="playlist-composition-current">
+                    {% if music.composition_file %}
+                    <h5 class="card-title">{{ music.composition_title }}</h5>
+                    <h6 class="card-title">{{ music.composition_singer.nickname }}</h6>
+                    <audio src="{{ music.composition_file.url }}" id="audio-playlist" controls></audio>
                     {% endif %}
-                    {% for music in playlist.playlist_composition.all %}
-                    <div id="playlist-composition-current">
-                        {% if music.composition_file %}
-                        <h5 class="card-title">{{ music.composition_title }}</h5>
-                        <h6 class="card-title">{{ music.composition_singer.nickname }}</h6>
-                        <audio src="{{ music.composition_file.url }}" id="audio-playlist" controls></audio>
-                        {% endif %}
-                    </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
             </div>
+        </div>
     </div>
 </div>
 

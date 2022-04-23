@@ -1,14 +1,10 @@
 from django.contrib.auth import logout, login
-from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.forms import formset_factory
 from django.shortcuts import render, redirect
 from django.urls import reverse
-
 from .models import *
 from .forms import *
-from django.db.models import Q
-from django.views.generic.edit import FormView
+
 
 
 def show_main_page(request):
@@ -71,14 +67,16 @@ def show_playlist(request, playlist_id):
 
 def show_user_form(request):
     if request.method == 'POST':
-        #BAD CODE BECAUSE OF INSTANCE
-        form = RedactInfoUserForm(request.POST, request.FILES, instance=request.user.profile, initial={'first_name':request.user.first_name, 'last_name':request.user.last_name, 'email':request.user.email})
-        if form.is_valid():
-            form.save()
+        form1 = RedactInfoUserForm(request.POST, request.FILES, instance=request.user)
+        form2 = RedactInfoProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if form1.is_valid() and form2.is_valid():
+            form1.save()
+            form2.save()
             redirect('profile')
     else:
-        form = RedactInfoUserForm(instance=request.user.profile, initial={'first_name':request.user.first_name, 'last_name':request.user.last_name, 'email':request.user.email})
-    return render(request, 'musiccloud/user_profile.html', {'form':form})
+        form1 = RedactInfoUserForm(instance=request.user)
+        form2 = RedactInfoProfileForm(instance=request.user.profile)
+    return render(request, 'musiccloud/user_profile.html', {'form1':form1, 'form2':form2})
 
 
 

@@ -2,26 +2,22 @@
 
 {% block content %}
 
-<script>
-
-</script>
-
 
 <div class="container">
     <div class="row">
-            <div class="card-body">
-                <div id="composition-current">
-                    <img src="{{ compositions.composition_envelope.url }}" id="single-current-composition-envelope" alt="">
-                    <h5 class="card-title">{{ compositions.composition_title }}</h5>
-                    <h6 class="card-title">{{ compositions.composition_singer.nickname }}</h6>
-                    <h6 class="card-title">Date of release: {{ compositions.composition_date }}</h6>
-                    <div id="audio-panel">
-                        {% if compositions.composition_file %}
-                        <audio src="{{ compositions.composition_file.url }}" id="audio-playlist-single" controls></audio>
-                        {% endif %}
-                    </div>
+        <div class="card-body">
+            <div id="composition-current">
+                <img src="{{ compositions.composition_envelope.url }}" id="single-current-composition-envelope" alt="">
+                <h5 class="card-title">{{ compositions.composition_title }}</h5>
+                <h6 class="card-title">{{ compositions.composition_singer.nickname }}</h6>
+                <h6 class="card-title">Date of release: {{ compositions.composition_date }}</h6>
+                <div id="audio-panel">
+                    {% if compositions.composition_file %}
+                    <audio src="{{ compositions.composition_file.url }}" id="audio-playlist-single" controls></audio>
+                    {% endif %}
                 </div>
             </div>
+        </div>
     </div>
 </div>
 

@@ -5,7 +5,6 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-
         {% if user.is_authenticated %}
         <div class="navbar-nav" id="logout-bar" >
             <div class="nav-item dropdown" >
@@ -28,16 +27,21 @@
         </div>
         {% endif %}
     </div>
-
 </nav>
 
 <script>
 
+
     document.getElementById('navbarDropdown').onclick = function () {
-        document.getElementById('dropdown-menu').style.display = 'block';
+        let el = document.getElementById('dropdown-menu');
+        if (el.style.display == 'none'){
+            document.getElementById('dropdown-menu').style.display = 'block';
+        }
+        else{
+            document.getElementById('dropdown-menu').style.display = 'none';
+        }
 
-    }
-
+    };
 
 </script>
 

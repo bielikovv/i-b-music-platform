@@ -3,6 +3,7 @@ html, body{
     height: 100%;
     width: 100%;
     background-attachment: fixed;
+    transform: none;
 
 }
 
@@ -368,18 +369,21 @@ select#id_composition_album:disabled{
     opacity: 85%;
     box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
     -webkit-box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.54);
+    position: relative;
+    z-index: 888;
 
 }
 
 .dropdown-menu{
-    background: rgba(255, 255, 255, 0.8);
+    background: #ffffff;
     color: #f4759b;
     border-radius: 0px;
     border-width: 0px;
     margin-left: 40px;
     text-align: right;
-    position: fixed;
+    position: relative;
     z-index: 100;
+
 }
 
 #single-current-composition-envelope{
@@ -654,7 +658,9 @@ input[type="checkbox" i]:disabled{
     opacity: 95%;
     width: 300px;
     text-align: center;
+    z-index: 10;
 }
+
 
 #first-part-singer-info{
     width: 300px;
